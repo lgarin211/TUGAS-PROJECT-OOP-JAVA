@@ -10,7 +10,6 @@ public class main {
 //        login();
         tambahProduk();
     }
-
     public static void Menu(){
         FreamMenu newFream = new FreamMenu();
         newFream.setTitle("FreamMen");
@@ -22,6 +21,7 @@ public class main {
         });
 
     }
+
 
     public static void tambahProduk(){
 
@@ -65,6 +65,7 @@ public class main {
         System.out.println("Stok : " + stokProdukBaru);
     }
 
+
     public static void login() {
         Login newFream = new Login();
         newFream.setTitle("LOGIN");
@@ -73,8 +74,8 @@ public class main {
                 String Mail = newFream.Usernam.getText();
                 String Pass = newFream.password.getText();
                 // PARSE TO INTEGER
-//                Pass = Integer.parseInt(newFream.password.getText());
-                login(Mail, Pass,newFream);
+                //  Pass = Integer.parseInt(newFream.password.getText());
+                login(Mail, Pass,newFream); 
             }
         });
     }
@@ -109,7 +110,6 @@ public class main {
                 String nama = newFream.Table.getModel().getValueAt(row, 1).toString();
                 String harga = newFream.Table.getModel().getValueAt(row, 2).toString();
                 String Qty = newFream.Table.getModel().getValueAt(row, 3).toString();
-
                 newFream.Harg.setText(harga);
                 newFream.Nama.setText(nama);
                 newFream.QTY.setText(Qty);
@@ -125,11 +125,9 @@ public class main {
                 String nama = newFream.Table.getModel().getValueAt(row, 1).toString();
                 String harga = newFream.Table.getModel().getValueAt(row, 2).toString();
                 String Qty = newFream.Table.getModel().getValueAt(row, 3).toString();
-
             }
         });
-
-    }
+  }
 
 
 }
