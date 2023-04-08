@@ -1,5 +1,6 @@
 package Project_Kelompok;
 
+import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.event.TableModelEvent;
@@ -7,15 +8,15 @@ import javax.swing.event.TableModelListener;
 
 public class main {
     public static void main(String[] args) {
-//        login();
-        tambahProduk();
+        login();
+//        tambahProduk();
     }
     public static void Menu(){
-        FreamMenu newFream = new FreamMenu();
-        newFream.setTitle("FreamMen");
-        newFream.Menu_3.addActionListener(new ActionListener() {
+        FrameMenu newFrame = new FrameMenu();
+        newFrame.setTitle("FreamMenu");
+        newFrame.MenuKasir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                newFream.setVisible(false);
+                newFrame.setVisible(false);
                 Kasir();
             }
         });
@@ -71,7 +72,7 @@ public class main {
         newFream.setTitle("LOGIN");
         newFream.untitled_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String Mail = newFream.Usernam.getText();
+                String Mail = newFream.Username.getText();
                 String Pass = newFream.password.getText();
                 // PARSE TO INTEGER
                 //  Pass = Integer.parseInt(newFream.password.getText());
@@ -100,7 +101,7 @@ public class main {
     }
 
     public static void Kasir(){
-        FreamKasir newFream = new FreamKasir();
+        FrameKasir newFream = new FrameKasir();
         newFream.setTitle("FreamKasir");
         //row click
         newFream.Table.addMouseListener(new MouseAdapter() {

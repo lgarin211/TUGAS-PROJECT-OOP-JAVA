@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Login extends JFrame {
-    JTextArea Usernam;
+    JTextArea Username;
     JPasswordField password;
     JButton untitled_3;
     JLabel TEXTOFALERT;
@@ -19,13 +19,13 @@ public class Login extends JFrame {
     }
 
     void setupGUI() {
-        Usernam = new JTextArea();
-        Usernam.setLocation(114, 114);
-        Usernam.setSize(150, 30);
-        Usernam.setText("LOGIN");
-        Usernam.setRows(5);
-        Usernam.setColumns(5);
-        getContentPane().add(Usernam);
+        Username = new JTextArea();
+        Username.setLocation(114, 114);
+        Username.setSize(150, 30);
+        Username.setText("LOGIN");
+        Username.setRows(5);
+        Username.setColumns(5);
+        getContentPane().add(Username);
 
         password = new JPasswordField();
         password.setLocation(114, 144);
