@@ -2,6 +2,7 @@ package Project_Kelompok;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -17,13 +18,16 @@ public class main {
         newFrame.MenuKasir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 newFrame.setVisible(false);
-                Kasir();
+                FrameKasir newFrameKasir = new FrameKasir();
+                newFrameKasir.Kasir();
             }
         });
 
     }
 
 
+    public static ArrayList<TambahProdukFrame> listTambahProduk = new ArrayList<TambahProdukFrame>();
+    
     public static void tambahProduk(){
 
 //        int stokProdukBaru;
