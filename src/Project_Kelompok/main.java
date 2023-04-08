@@ -2,6 +2,7 @@ package Project_Kelompok;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -10,13 +11,17 @@ public class main {
     public static void main(String[] args) {
         login();
     }
+
+    
+
     public static void Menu(){
         FrameMenu newFrame = new FrameMenu();
         newFrame.setTitle("FreamMenu");
         newFrame.MenuKasir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 newFrame.setVisible(false);
-                Kasir();
+                FrameKasir newFrameKasir = new FrameKasir();
+                newFrameKasir.Kasir();
             }
         });
 
@@ -31,6 +36,8 @@ public class main {
     }
 
 
+    public static ArrayList<TambahProdukFrame> listTambahProduk = new ArrayList<TambahProdukFrame>();
+    
     public static void tambahProduk(){
 
 //        int stokProdukBaru;
@@ -62,6 +69,7 @@ public class main {
 
                 if(tanda2 == 1 && tanda3 == 1){
                     getDataTambahProduk(namaProdukBaru, hargaProdukBaru, stokProdukBaru);
+                    listTambahProduk.add(newFream);
                 }
             }
         });
