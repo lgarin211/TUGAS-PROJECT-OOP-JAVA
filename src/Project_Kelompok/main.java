@@ -21,6 +21,9 @@ public class main {
         login();
 //        tambahProduk();
     }
+
+    
+
     public static void Menu(){
         FrameMenu newFrame = new FrameMenu();
         newFrame.setTitle("FreamMenu");
@@ -39,6 +42,52 @@ public class main {
                 newFrameTambahProduk.tambahProduk();
             }
         });
+    }
+
+
+    public static ArrayList<TambahProdukFrame> listTambahProduk = new ArrayList<TambahProdukFrame>();
+    
+    public static void tambahProduk(){
+
+//        int stokProdukBaru;
+//        String namaProdukBaru;
+        TambahProdukFrame newFream = new TambahProdukFrame();
+        newFream.buttonTambah.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int hargaProdukBaru = 0, tanda2 = 1, tanda3 = 1;
+                int stokProdukBaru = 0;
+                String namaProdukBaru = newFream.getNama();
+
+                try{
+                    tanda2 = 1;
+                    hargaProdukBaru = newFream.getHarga();
+                }catch(NumberFormatException exception){
+                    tanda2 = 2;
+                    System.out.println("Please input number for Harga Produk Baru");
+                }
+
+                try{
+                    tanda3 = 1;
+                    stokProdukBaru = newFream.getStok();
+                }catch(NumberFormatException exception){
+                    tanda3 = 2;
+                    System.out.println("Please input number for Stok Produk Baru");
+                }
+
+                if(tanda2 == 1 && tanda3 == 1){
+                    getDataTambahProduk(namaProdukBaru, hargaProdukBaru, stokProdukBaru);
+                    listTambahProduk.add(newFream);
+                }
+            }
+        });
+    }
+
+    static void getDataTambahProduk(String namaProdukBaru, int hargaProdukBaru, int stokProdukBaru){
+        System.out.println("Nama : " + namaProdukBaru);
+        System.out.println("Harga : " + hargaProdukBaru);
+        System.out.println("Stok : " + stokProdukBaru);
     }
 
 
