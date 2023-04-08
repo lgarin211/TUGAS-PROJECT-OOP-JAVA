@@ -12,6 +12,9 @@ public class main {
         login();
 //        tambahProduk();
     }
+
+    
+
     public static void Menu(){
         FrameMenu newFrame = new FrameMenu();
         newFrame.setTitle("FreamMenu");
@@ -59,6 +62,7 @@ public class main {
 
                 if(tanda2 == 1 && tanda3 == 1){
                     getDataTambahProduk(namaProdukBaru, hargaProdukBaru, stokProdukBaru);
+                    listTambahProduk.add(newFream);
                 }
             }
         });
