@@ -7,8 +7,7 @@ import javax.swing.event.TableModelListener;
 
 public class main {
     public static void main(String[] args) {
-//        login();
-        tambahProduk();
+        login();
     }
     public static void Menu(){
         FreamMenu newFream = new FreamMenu();
@@ -17,6 +16,14 @@ public class main {
             public void actionPerformed(ActionEvent e) {
                 newFream.setVisible(false);
                 Kasir();
+            }
+        });
+
+        newFream.Menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                newFream.setVisible(false);
+                tambahProduk();
             }
         });
 
