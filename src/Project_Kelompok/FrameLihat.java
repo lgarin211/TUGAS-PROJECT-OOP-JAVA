@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class FreamLihat extends JFrame {
+public class FrameLihat extends JFrame {
     JLabel Lihat;
     JTable Table;
     JPanel TextPot;
@@ -28,7 +28,7 @@ public class FreamLihat extends JFrame {
 
     };
 
-    public FreamLihat() {
+    public FrameLihat() {
         getContentPane().setLayout(null);
         setupGUI();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +69,6 @@ public class FreamLihat extends JFrame {
     }
 
     public static void main(String args[]) {
-        new FreamLihat();
+        new FrameLihat();
     }
 }

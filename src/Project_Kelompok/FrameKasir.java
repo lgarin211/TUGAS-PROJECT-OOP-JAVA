@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class FreamKasir extends JFrame {
+public class FrameKasir extends JFrame {
     JLabel LKasir;
     JTextArea Nama;
     // input number
@@ -23,7 +23,7 @@ public class FreamKasir extends JFrame {
 
     public Object table;
 
-    public FreamKasir() {
+    public FrameKasir() {
         getContentPane().setLayout(null);
         setupGUI();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,6 +116,6 @@ public class FreamKasir extends JFrame {
     }
 
     public static void main(String args[]) {
-        new FreamKasir();
+        new FrameKasir();
     }
 }
