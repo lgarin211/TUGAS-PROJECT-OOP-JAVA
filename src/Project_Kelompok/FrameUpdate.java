@@ -1,72 +1,101 @@
 package Project_Kelompok;
 import javax.swing.*;
+import javax.swing.plaf.ComponentUI;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class FrameUpdate extends JFrame {
-    JComboBox list;
-    JTextArea updateHarga;
-    JTextArea updateStok;
-    JLabel labelHarga;
-    JLabel labelStok;
-    JButton updateButton;
+public class FrameUpdate extends JFrame implements ActionListener {
+    private JLabel headerUpdateProduk = new JLabel("Update Produk");
+    private JPanel centerPanel = new JPanel(new GridLayout(3,2));
+    private JPanel footerPanel = new JPanel();
+    private JComboBox list = new JComboBox();
+    private JTextField updateHarga = new JTextField("Update Harga");
+    private JTextField updateStok = new JTextField("Update Stok");
+    private JLabel labelProduk = new JLabel("List Produk");
+    private JLabel labelHarga = new JLabel("Update Harga");
+    private JLabel labelStok = new JLabel("Update Stok");
+    private JButton updateButton = new JButton("Update");
+    private JLabel labelList = new JLabel("List Produk");
+    public static ArrayList<String[]> dataProduk = new ArrayList<>();
+
+
+    public static void main(String[] args) {
+
+
+        String[] a={"Barang 1","1000","5"};
+        String[] b={"Barang 2","2000","10"};
+        String[] c={"Barang 3","3000","15"};
+
+        dataProduk.add(a);
+        dataProduk.add(b);
+        dataProduk.add(c);
+
+        new FrameUpdate();
+    }
 
 
     public FrameUpdate(){
-        getContentPane().setLayout(null);
-        UpdateProduk();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
+        headerUpdateProduk.setHorizontalAlignment(SwingConstants.CENTER);
 
-    void UpdateProduk(){
-        //Ini buat dropdown combobox
-        list = new JComboBox();
-        list.setLocation(25,10);
-        list.setSize(200,50);
-        list.setEditable(false);
-        getContentPane().add(list);
+        add(headerUpdateProduk, BorderLayout.NORTH);
 
-        //Ini buat update harganya
-        updateHarga = new JTextArea();
-//        updateHarga.setText("Update Harga");
-        updateHarga.setLocation(150,100);
-        updateHarga.setSize(200,50);
-        updateHarga.setRows(5);
-        updateHarga.setColumns(5);
-        getContentPane().add(updateHarga);
+        for (String[] st:dataProduk) {
+            list.addItem(st[0]);
+        }
 
-        //label untuk updateHarga
-        labelHarga = new JLabel("Update Harga");
-        labelHarga.setLocation(25,100);
-        labelHarga.setSize(200,50);
-        getContentPane().add(labelHarga);
+        centerPanel.add(labelProduk);
+        centerPanel.add(list);
 
-        //label untuk updateStok
-        labelStok = new JLabel("Update Stok");
-        labelStok.setLocation(25,200);
-        labelStok.setSize(200,50);
-        getContentPane().add(labelStok);
+        centerPanel.add(labelHarga);
+        centerPanel.add(updateHarga);
 
-        //Ini buat update stoknya
-        updateStok = new JTextArea();
-//        updateStok.setText("Update Stok");
-        updateStok.setLocation(150,200);
-        updateStok.setSize(200,50);
-        updateStok.setRows(5);
-        updateStok.setColumns(5);
-        getContentPane().add(updateStok);
+        centerPanel.add(labelStok);
+        centerPanel.add(updateStok);
 
-        //Button update
-        updateButton = new JButton();
-        updateButton.setLocation(150, 300);
-        updateButton.setSize(100,50);
-        updateButton.setText("Update");
-        getContentPane().add(updateButton);
+        add(centerPanel);
 
-        setTitle("Update");
+        footerPanel.add(updateButton);
+        add(footerPanel, BorderLayout.SOUTH);
+
         setSize(400,400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        setResizable(false);
+
+        list.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int po=0;
+                for (String [] li:dataProduk) {
+                    if(li[0].equals(list.getSelectedItem())){
+                        updateHarga.setText(dataProduk.get(po)[1]);
+                        updateStok.setText(dataProduk.get(po)[2]);
+                    }
+                    po++;
+                }
+
+            }
+        });
+
+        updateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int po=0;
+                for (String [] li:dataProduk) {
+                    if(li[0].equals(list.getSelectedItem())){
+                        dataProduk.get(po)[1] = updateHarga.getText();
+                        dataProduk.get(po)[2] = updateStok.getText();
+                    }
+                    po++;
+                }
+            }
+        });
     }
-    public static void main(String[] args) {
-        new FrameUpdate();
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }
