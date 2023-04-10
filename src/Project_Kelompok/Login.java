@@ -34,7 +34,7 @@ public class Login extends JFrame {
         password.setColumns(10);
         password.setEchoChar('*');
         getContentPane().add(password);
-        // get value password
+        
         String pass = password.getText();
 
         untitled_3 = new JButton();

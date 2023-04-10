@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class TambahProdukFrame extends JFrame {
 
     private JLabel headerTambahProduk = new JLabel("Tambah Produk");
-    //    GridLayout layout = new GridLayout(3, 2).setVgap(20);
     private JPanel panelUtama = new JPanel(new GridLayout(3, 2, 0, 50));
     private JLabel namaLabel = new JLabel("Nama Produk Baru: ");
     private JLabel hargaLabel = new JLabel("Harga Produk Baru: ");
@@ -20,9 +19,7 @@ public class TambahProdukFrame extends JFrame {
     JPanel containerButton = new JPanel();
     JButton buttonTambah = new JButton("Tambah");
 
-    ArrayList<TambahProdukFrame> dataProdukBaru = new ArrayList<>();
-
-    public TambahProdukFrame(){
+    public TambahProdukFrame() {
         headerTambahProduk.setHorizontalAlignment(SwingConstants.CENTER);
         add(headerTambahProduk, BorderLayout.NORTH);
 
@@ -38,77 +35,62 @@ public class TambahProdukFrame extends JFrame {
         add(panelUtama);
 
         setSize(400, 400);
-//        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public Integer getHarga(){
+    public Integer getHarga() {
         return Integer.parseInt(hargaField.getText());
     }
-    public Integer getStok(){
+
+    public Integer getStok() {
         return Integer.parseInt(stokField.getText());
     }
 
-    public String getNama(){
+    public String getNama() {
         return namaField.getText();
     }
 
-    public void tambahProduk(){
+    public void setHargaField(String newHarga) {
+        this.hargaField.setText(newHarga);
+    }
 
-//        int stokProdukBaru;
-//        String namaProdukBaru;
+    public void setStokField(String stokField) {
+        this.stokField.setText(stokField);
+    }
+
+    public void tambahProduk() {
         TambahProdukFrame newFrame = new TambahProdukFrame();
         newFrame.setVisible(true);
         newFrame.buttonTambah.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 int hargaProdukBaru = 0, tanda2 = 1, tanda3 = 1;
                 int stokProdukBaru = 0;
                 String namaProdukBaru = newFrame.getNama();
 
-                try{
+                try {
                     tanda2 = 1;
                     hargaProdukBaru = newFrame.getHarga();
-                }catch(NumberFormatException exception){
+                } catch (NumberFormatException exception) {
                     tanda2 = 2;
                     System.out.println("Please input number for Harga Produk Baru");
                 }
 
-                try{
+                try {
                     tanda3 = 1;
                     stokProdukBaru = newFrame.getStok();
-                }catch(NumberFormatException exception){
+                } catch (NumberFormatException exception) {
                     tanda3 = 2;
                     System.out.println("Please input number for Stok Produk Baru");
                 }
 
-                if(tanda2 == 1 && tanda3 == 1){
-//                    getDataTambahProduk(namaProdukBaru, hargaProdukBaru, stokProdukBaru);
+                if (tanda2 == 1 && tanda3 == 1) {
                     main.DataProduk.add(newFrame);
-                    getDataTambahProduk(main.DataProduk);
                     newFrame.setVisible(false);
-
-                    TambahProdukFrame newFrameTambahProduk = new TambahProdukFrame();
-                    newFrameTambahProduk.tambahProduk();
+                    new TambahProdukFrame().tambahProduk();
                 }
             }
         });
     }
-
-    void getDataTambahProduk(ArrayList<TambahProdukFrame> dataProdukBaru){
-        for (int i = 0 ; i < dataProdukBaru.size() ; i++){
-            System.out.println("Produk " + i);
-            System.out.println("Nama : " + dataProdukBaru.get(i).getNama());
-            System.out.println("Harga : " + dataProdukBaru.get(i).getHarga());
-            System.out.println("Stok : " + dataProdukBaru.get(i).getStok());
-            System.out.println("===============================================");
-        }
-    }
-//    void getDataTambahProduk(String namaProdukBaru, int hargaProdukBaru, int stokProdukBaru){
-//        System.out.println("Nama : " + namaProdukBaru);
-//        System.out.println("Harga : " + hargaProdukBaru);
-//        System.out.println("Stok : " + stokProdukBaru);
-//    }
-
 }
