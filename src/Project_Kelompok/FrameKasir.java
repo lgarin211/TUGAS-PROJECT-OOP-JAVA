@@ -125,7 +125,6 @@ public class FrameKasir extends JFrame {
     public static void main(String args[]) {
         new FrameKasir();
     }
-    
 
     public static void Kasir(){
         FrameKasir newFream = new FrameKasir();

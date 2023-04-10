@@ -7,7 +7,16 @@ import java.util.ArrayList;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
+
+
 public class main {
+
+    String[] Item={"Nasi","1000","10"};
+
+
+
+    public static ArrayList<TambahProdukFrame> DataProduk=new ArrayList<>();
+
     public static void main(String[] args) {
         login();
 //        tambahProduk();
@@ -25,7 +34,14 @@ public class main {
                 newFrameKasir.Kasir();
             }
         });
-
+        newFrame.MenuTambahProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                newFrame.setVisible(false);
+                TambahProdukFrame newFrameTambahProduk = new TambahProdukFrame();
+                newFrameTambahProduk.tambahProduk();
+            }
+        });
     }
 
 
@@ -108,36 +124,5 @@ public class main {
         }
     }
 
-    public static void Kasir(){
-        FrameKasir newFream = new FrameKasir();
-        newFream.setTitle("FreamKasir");
-        //row click
-        newFream.Table.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                int row = newFream.Table.getSelectedRow();
-                String id = newFream.Table.getModel().getValueAt(row, 0).toString();
-                String nama = newFream.Table.getModel().getValueAt(row, 1).toString();
-                String harga = newFream.Table.getModel().getValueAt(row, 2).toString();
-                String Qty = newFream.Table.getModel().getValueAt(row, 3).toString();
-                newFream.Harg.setText(harga);
-                newFream.Nama.setText(nama);
-                newFream.QTY.setText(Qty);
-            }
-        });
-
-        // on a colom edit
-        newFream.Table.getModel().addTableModelListener(new TableModelListener() {
-            public void tableChanged(TableModelEvent e) {
-                int row = newFream.Table.getSelectedRow();
-                int col = newFream.Table.getSelectedColumn();
-                String id = newFream.Table.getModel().getValueAt(row, 0).toString();
-                String nama = newFream.Table.getModel().getValueAt(row, 1).toString();
-                String harga = newFream.Table.getModel().getValueAt(row, 2).toString();
-                String Qty = newFream.Table.getModel().getValueAt(row, 3).toString();
-            }
-        });
-    }
-
 
 }
-
