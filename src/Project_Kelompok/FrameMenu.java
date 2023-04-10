@@ -1,50 +1,49 @@
 package Project_Kelompok;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class FrameMenu extends JFrame {
-    JButton MenuTambahProduk;
-    JButton MenuUpdateProduk;
-    JButton MenuKasir;
-    JButton MenuLihatProduk;
+    private JPanel panelUtama = new JPanel(new GridLayout(2, 2));
+    private JButton MenuTambahProduk = new JButton("Tambah Produk");
+    private JButton MenuUpdateProduk = new JButton("Update Produk");
+    private JButton MenuKasir = new JButton("Kasir");
+    private JButton MenuLihatProduk = new JButton("Lihat Produk");
 
     public FrameMenu() {
-        this.setLayout(null);
-        setupGUI();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panelUtama.add(MenuTambahProduk);
+        panelUtama.add(MenuUpdateProduk);
+        panelUtama.add(MenuKasir);
+        panelUtama.add(MenuLihatProduk);
+        add(panelUtama);
+        Menu();
+        setSize(400, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
-    void setupGUI() {
-        MenuTambahProduk = new JButton();
-        MenuTambahProduk.setLocation(100, 35);
-        MenuTambahProduk.setSize(100, 100);
-        MenuTambahProduk.setText("Tambah Produk");
-        add(MenuTambahProduk);
+    public void Menu() {
+        
+        MenuKasir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new FrameKasir();
+            }
+        });
 
-        MenuUpdateProduk = new JButton();
-        MenuUpdateProduk.setLocation(200, 35);
-        MenuUpdateProduk.setSize(100, 100);
-        MenuUpdateProduk.setText("Update Produk");
-        add(MenuUpdateProduk);
+        MenuTambahProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new TambahProdukFrame();
+            }
+        });
 
-        MenuKasir = new JButton();
-        MenuKasir.setLocation(100, 135);
-        MenuKasir.setSize(100, 100);
-        MenuKasir.setText("Kasir");
-        add(MenuKasir);
-
-        MenuLihatProduk = new JButton();
-        MenuLihatProduk.setLocation(200, 135);
-        MenuLihatProduk.setSize(100, 100);
-        MenuLihatProduk.setText("Lihat Produk");
-        add(MenuLihatProduk);
-
-        setTitle("Frame Menu");
-        setSize(400, 400);
-        setVisible(true);
-        setResizable(true);
-
+        MenuUpdateProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FrameUpdate();
+            }
+        });
     }
 
     public static void main(String args[]) {

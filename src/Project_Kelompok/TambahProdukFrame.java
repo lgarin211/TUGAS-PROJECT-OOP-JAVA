@@ -19,6 +19,12 @@ public class TambahProdukFrame extends JFrame {
     JPanel containerButton = new JPanel();
     JButton buttonTambah = new JButton("Tambah");
 
+    public TambahProdukFrame(String Nama,String Harga, String Stok) {
+        namaField.setText(Nama);
+        hargaField.setText(Harga);
+        stokField.setText(Stok);
+    }
+
     public TambahProdukFrame() {
         headerTambahProduk.setHorizontalAlignment(SwingConstants.CENTER);
         add(headerTambahProduk, BorderLayout.NORTH);
@@ -33,9 +39,9 @@ public class TambahProdukFrame extends JFrame {
         panelUtama.add(stokLabel);
         panelUtama.add(stokField);
         add(panelUtama);
-
+        setVisible(true);
+        tambahProduk();
         setSize(400, 400);
-        setVisible(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -59,9 +65,16 @@ public class TambahProdukFrame extends JFrame {
         this.stokField.setText(stokField);
     }
 
+    public void setNamaField(String namaField) {
+        this.namaField.setText(namaField);
+    }
+
+    public static void main(String args[]) {
+        new TambahProdukFrame();
+    }
+
     public void tambahProduk() {
-        TambahProdukFrame newFrame = new TambahProdukFrame();
-        newFrame.setVisible(true);
+        TambahProdukFrame newFrame = this;
         newFrame.buttonTambah.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
