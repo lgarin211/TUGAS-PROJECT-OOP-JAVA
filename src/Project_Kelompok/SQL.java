@@ -5,10 +5,10 @@ import java.sql.*;
 import com.mysql.cj.jdbc.Driver;
 
 public class SQL {
-    String url = "jdbc:mysql://localhost:3306/java_pac";
+    String url = "jdbc:mysql://www.lagarin.my.id:3306/lagarinm_Project_OOP_PPTI15";
     String driver = "com.mysql.cj.jdbc.Driver";
-    String username = "root";
-    String password = "";
+    String username = "lagarinm_lagarinm";
+    String password = "Gsagustinus211";
     Connection con = null;
     Statement st = null;
     ResultSet rs = null;
