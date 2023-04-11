@@ -1,5 +1,3 @@
-
-//Code Genarated by JGuiD
 package Project_Kelompok;
 
 import java.awt.*;

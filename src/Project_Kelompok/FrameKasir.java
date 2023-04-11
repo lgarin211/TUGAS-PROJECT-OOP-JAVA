@@ -1,6 +1,4 @@
 package Project_Kelompok;
-
-//Code Genarated by JGuiD
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
