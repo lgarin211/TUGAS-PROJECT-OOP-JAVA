@@ -45,7 +45,7 @@ public class FrameKasir extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
         setSize(400, 400);
         setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public static void main(String args[]) {

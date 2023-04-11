@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class TambahProdukFrame extends JFrame {
-
+    public String id="A";
     private JLabel headerTambahProduk = new JLabel("Tambah Produk");
     private JPanel panelUtama = new JPanel(new GridLayout(3, 2, 0, 50));
     private JLabel namaLabel = new JLabel("Nama Produk Baru: ");
@@ -19,10 +19,11 @@ public class TambahProdukFrame extends JFrame {
     JPanel containerButton = new JPanel();
     JButton buttonTambah = new JButton("Tambah");
 
-    public TambahProdukFrame(String Nama,String Harga, String Stok) {
+    public TambahProdukFrame(String index, String Nama, String Harga, String Stok) {
         namaField.setText(Nama);
         hargaField.setText(Harga);
         stokField.setText(Stok);
+        id=index;
     }
 
     public TambahProdukFrame() {
@@ -99,9 +100,12 @@ public class TambahProdukFrame extends JFrame {
                 }
 
                 if (tanda2 == 1 && tanda3 == 1) {
+                    String commend=("INSERT INTO dataproduk VALUES (NULL, '" + newFrame.getNama() + "', '"+ newFrame.getStok() + "', '" + newFrame.getHarga() + "')");
+                    System.out.println(commend);
                     main.DataProduk.add(newFrame);
+                    new SQL().SetupConeksi(commend, "Update");
                     newFrame.setVisible(false);
-                    new TambahProdukFrame().tambahProduk();
+                    new TambahProdukFrame();
                 }
             }
         });

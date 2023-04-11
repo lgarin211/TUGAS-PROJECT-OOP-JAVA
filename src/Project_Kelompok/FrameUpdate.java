@@ -64,7 +64,9 @@ public class FrameUpdate extends JFrame implements ActionListener {
                 for (TambahProdukFrame l : main.DataProduk) {
                     if (l.getNama().equals(list.getSelectedItem())) {
                         l.setHargaField(updateHarga.getText());
-                        l.setStokField(updateHarga.getText());
+                        l.setStokField(updateStok.getText());
+                        String commend=("UPDATE dataproduk SET `Stok` = '"+updateStok.getText()+"', `Harga` = '"+updateHarga.getText()+"' WHERE `dataproduk`.`Nama_produk` = '"+l.getNama()+"'");
+                        new SQL().SetupConeksi(commend, "Insert");
                     }
                 }
             }

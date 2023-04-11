@@ -24,7 +24,7 @@ public class FrameMenu extends JFrame {
     }
 
     public void Menu() {
-        
+
         MenuKasir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new FrameKasir();
@@ -42,6 +42,13 @@ public class FrameMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new FrameUpdate();
+            }
+        });
+
+        MenuLihatProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FrameLihat();
             }
         });
     }

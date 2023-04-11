@@ -7,31 +7,27 @@ public class FrameLihat extends JFrame {
     JLabel Lihat;
     JTable Table;
     JPanel TextPot;
-    JButton Kembali;
 
 
-    Object data[][] = {
-            { "1", "Baju", "Rp. 100.000", "2" },
-            { "2", "Celana", "Rp. 50.000", "1" },
-            { "1", "Baju", "Rp. 100.000", "2" },
-            { "2", "Celana", "Rp. 50.000", "1" },
-            { "1", "Baju", "Rp. 100.000", "2" },
-            { "2", "Celana", "Rp. 50.000", "1" },
-            { "1", "Baju", "Rp. 100.000", "2" },
-            { "2", "Celana", "Rp. 50.000", "1" },
-            { "1", "Baju", "Rp. 100.000", "2" },
-            { "2", "Celana", "Rp. 50.000", "1" },
-            { "1", "Baju", "Rp. 100.000", "2" },
-            { "2", "Celana", "Rp. 50.000", "1" },
-            { "1", "Baju", "Rp. 100.000", "2" },
-            { "2", "Celana", "Rp. 50.000", "1" },
-
-    };
-
+    public static Object data[][] = new Object[main.DataProduk.size()][4];
+    
     public FrameLihat() {
+        int a=0;
+        for (TambahProdukFrame l : main.DataProduk) {
+            data[a][0] = l.id;
+            data[a][1] = l.getNama();
+            data[a][2] = l.getHarga();
+            data[a][3] = l.getStok();
+            a++;
+
+            for (Object[] objects : data) {
+                System.out.println(objects[0] + " " + objects[1] + " " + objects[2] + " " + objects[3]);
+            }
+        }
+
         getContentPane().setLayout(null);
         setupGUI();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     void setupGUI() {
@@ -53,13 +49,6 @@ public class FrameLihat extends JFrame {
         Table.setPreferredScrollableViewportSize(new Dimension(700, 200));
         JScrollPane scrollPane = new JScrollPane(Table);
         TextPot.add(scrollPane);
-
-        Kembali = new JButton();
-        Kembali.setLocation(0, 10);
-        Kembali.setSize(100, 50);
-        Kembali.setText("Kembali");
-        add(Kembali);
-
 
         setTitle("FreamLihat");
         setSize(800, 600);
