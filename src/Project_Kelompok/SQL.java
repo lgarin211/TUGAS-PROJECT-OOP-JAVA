@@ -15,7 +15,6 @@ public class SQL {
     // String username = "root";
     // String password = "";
 
-
     Connection con = null;
     Statement st = null;
     ResultSet rs = null;

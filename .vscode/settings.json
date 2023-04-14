@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "src/Project_Kelompok/lib/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar"
+        "src/Project_Kelompok/lib/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar",
+        "src/Project_Kelompok/mysql-connector-j-8.0.32.jar"
     ]
 }

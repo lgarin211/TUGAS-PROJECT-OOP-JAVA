@@ -1,4 +1,5 @@
 package Project_Kelompok;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,36 +10,36 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FrameKasir extends JFrame {
-    JPanel namaPembeliPanel = new JPanel(new GridLayout(4,2,0,25));
+    JPanel namaPembeliPanel = new JPanel(new GridLayout(4, 2, 0, 25));
     JLabel namaPembeliLabel = new JLabel("Nama Pembeli");
     JTextField namaPembeliField = new JTextField();
 
-    JPanel centerPanel = new JPanel(new GridLayout(3,2,0,25));
+    JPanel centerPanel = new JPanel(new GridLayout(3, 2, 0, 25));
     JLabel barangLabel = new JLabel("Barang");
     JComboBox listBarang = new JComboBox();
     JLabel hargaLabel = new JLabel("Harga");
     JTextField hargaField = new JTextField(20);
     JLabel quantityLabel = new JLabel("Quantity");
 
-    JPanel addQuantityPanel = new JPanel(new GridLayout(1,2));
+    JPanel addQuantityPanel = new JPanel(new GridLayout(1, 2));
     JTextField quantityField = new JTextField();
     JButton addButton = new JButton("Add");
 
     public static String[] TableTitle = { "No", "Nama", "Harga", "Quantity" };
     public static Object[][] TableData = {};
 
-    static DefaultTableModel model = new DefaultTableModel(TableData,TableTitle);
+    static DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
     static JTable table = new JTable(model);
 
     public static JScrollPane scrollPane = new JScrollPane(table);
     int i = 1;
-    JPanel checkoutButton = new JPanel(new GridLayout(1,2));
+    JPanel checkoutButton = new JPanel(new GridLayout(1, 2));
     JTextField sum = new JTextField();
     JButton checkout = new JButton("Checkout");
 
     int summary = 0;
 
-    public FrameKasir(){
+    public FrameKasir() {
         for (TambahProdukFrame l : main.DataProduk) {
             listBarang.addItem(l.getNama());
         }
@@ -46,7 +47,6 @@ public class FrameKasir extends JFrame {
         add(namaPembeliPanel, BorderLayout.NORTH);
         namaPembeliPanel.add(namaPembeliLabel);
         namaPembeliPanel.add(namaPembeliField);
-
 
         add(centerPanel, BorderLayout.CENTER);
         namaPembeliPanel.add(barangLabel);
@@ -60,23 +60,24 @@ public class FrameKasir extends JFrame {
 
         add(scrollPane);
 
-        for(TambahProdukFrame l : main.DataProduk){
-            Object[] newcolumnNames = {l.getHarga()};
+        for (TambahProdukFrame l : main.DataProduk) {
+            Object[] newcolumnNames = { l.getHarga() };
         }
 
-        table.setPreferredScrollableViewportSize(new Dimension(700,200));
+        table.setPreferredScrollableViewportSize(new Dimension(700, 200));
 
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(TambahProdukFrame l : main.DataProduk){
-                    if (l.getNama().equals(listBarang.getSelectedItem())){
-                        Object[] newcolumnNames = {i, listBarang.getSelectedItem(), l.getHarga(), quantityField.getText()};
+                for (TambahProdukFrame l : main.DataProduk) {
+                    if (l.getNama().equals(listBarang.getSelectedItem())) {
+                        Object[] newcolumnNames = { i, listBarang.getSelectedItem(), l.getHarga(),
+                                quantityField.getText() };
                         model.addRow(newcolumnNames);
                         i++;
                         int qty = Integer.parseInt(quantityField.getText().toString());
                         int price = l.getHarga();
-                        summary += qty*price;
+                        summary += qty * price;
                         System.out.println(summary);
                         sum.setText(String.valueOf(summary));
                     }
