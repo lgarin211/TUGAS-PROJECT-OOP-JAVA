@@ -9,6 +9,13 @@ public class SQL {
     String driver = "com.mysql.cj.jdbc.Driver";
     String username = "lagarinm_lagarinm";
     String password = "Gsagustinus211";
+
+    // String url = "jdbc:mysql://localhost:3306/java_pac";
+    // String driver = "com.mysql.cj.jdbc.Driver";
+    // String username = "root";
+    // String password = "";
+
+
     Connection con = null;
     Statement st = null;
     ResultSet rs = null;
