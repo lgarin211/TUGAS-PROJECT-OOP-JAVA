@@ -80,7 +80,6 @@ public class FrameKasir extends JFrame {
 //    public static Object[][] TableData = { { 1, "Baju", "Rp. 100.000", "2" }, { "2", "Celana", "Rp. 50.000", "1" },
 //            { "3", "Yoyo", "Rp. 50.000", "1" } };
     public static Object[][] TableData = {};
-//    public static ArrayList<Object[][]> TableData = new ArrayList<>();
 
 //    JDesktopPane desktopPane = new JDesktopPane();
 
