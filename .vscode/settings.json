@@ -2,6 +2,18 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "src/Project_Kelompok/lib/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar",
-        "src/Project_Kelompok/mysql-connector-j-8.0.32.jar"
+        "src/Project_Kelompok/mysql-connector-j-8.0.32.jar",
+        "src/Project_Kelompok/libPDF/barcodes-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/font-asian-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/forms-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/hyph-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/io-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/kernel-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/layout-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/pdfa-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/pdftest-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/sign-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/styled-xml-parser-7.1.3.jar",
+        "src/Project_Kelompok/libPDF/svg-7.1.3.jar"
     ]
 }
