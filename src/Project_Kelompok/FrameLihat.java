@@ -1,19 +1,21 @@
 package Project_Kelompok;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class FrameLihat extends JFrame {
     JLabel Lihat;
     JTable Table;
     JPanel TextPot;
 
+    public static Object data[][];
 
-    public static Object data[][] = new Object[main.DataProduk.size()][4];
-    
     public FrameLihat() {
-
+        main.DataProduk.clear();
+        main.loaddata();
         getContentPane().setLayout(null);
         setupGUI();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -26,7 +28,6 @@ public class FrameLihat extends JFrame {
         Lihat.setText("Lihat Produk");
         Lihat.setToolTipText("");
         getContentPane().add(Lihat);
-
         int a=0;
         main.DataProduk.removeAll(main.DataProduk);
         main.loaddata();
@@ -47,13 +48,18 @@ public class FrameLihat extends JFrame {
         TextPot = new JPanel();
         TextPot.setLocation(0, 100);
         TextPot.setSize(800, 400);
-        // TextPot.setBorder(BorderFactory.createLineBorder(Color.red));   
         getContentPane().add(TextPot);
         String[] columnNames = { "No", "Nama", "Harga", "Quantity" };
-        Table = new JTable(data, columnNames);
-        Table.setPreferredScrollableViewportSize(new Dimension(700, 200));
-        JScrollPane scrollPane = new JScrollPane(Table);
-        TextPot.add(scrollPane);
+
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        JTable table = new JTable(model);
+        table.setPreferredScrollableViewportSize(new Dimension(700, 200));
+        TextPot.add(new JScrollPane(table));
+
+        for (TambahProdukFrame l : main.DataProduk) {
+            Object[] newcolumnNames = { l.id, l.getNama(), l.getHarga(), l.getStok(), };
+            model.addRow(newcolumnNames);
+        }
 
         setTitle("FrameLihat");
         setSize(800, 600);
