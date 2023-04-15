@@ -1,0 +1,78 @@
+package Project_Kelompok;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class FrameDelete extends JFrame {
+    private JLabel headerFrameDelete = new JLabel("Delete Produk");
+    private JPanel PanelAtas = new JPanel(new GridLayout(2, 1, 40, 0));
+    private JComboBox listBarang = new JComboBox();
+    private JPanel panelDelete = new JPanel(new GridLayout(1, 2, 20, 0));
+    private JButton deleteButton = new JButton("Hapus");
+    private JButton deleteAllButton = new JButton("Hapus Semua Produk");
+
+    public FrameDelete() {
+        headerFrameDelete.setHorizontalAlignment(SwingConstants.CENTER);
+        PanelAtas.add(headerFrameDelete);
+//        add(headerFrameDelete, BorderLayout.NORTH);
+        for (TambahProdukFrame l : main.DataProduk) {
+            listBarang.addItem(l.getNama());
+        }
+        PanelAtas.add(listBarang);
+//        centerPanel.add(nyoba);
+        add(PanelAtas, BorderLayout.NORTH);
+        deleteButton.setHorizontalAlignment(SwingConstants.CENTER);
+        panelDelete.add(deleteButton);
+        panelDelete.add(deleteAllButton);
+        add(panelDelete, BorderLayout.SOUTH);
+
+        deleteProduk();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setVisible(true);
+        setSize(400, 400);
+    }
+        public void deleteProduk(){
+//            TambahProdukFrame newFrame = new TambahProdukFrame();
+            deleteButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    for(TambahProdukFrame l : main.DataProduk){
+                        if(l.getNama().equals(listBarang.getSelectedItem())){
+                            String commend =("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama()+"'");
+                            System.out.println(commend);
+                            new SQL().SetupConeksi(commend, "Delete");
+
+                            main.DataProduk.clear();
+                            main.loaddata();
+                            setVisible(false);
+                            new FrameDelete();
+                        }
+                    }
+                }
+            });
+
+            deleteAllButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    for(TambahProdukFrame l : main.DataProduk){
+                            String commend =("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama()+"'");
+                            System.out.println(commend);
+                            new SQL().SetupConeksi(commend, "Delete");
+//                        }
+                    }
+                    main.DataProduk.clear();
+                    main.loaddata();
+                    setVisible(false);
+                    new FrameDelete();
+                }
+            });
+        }
+
+
+//    public static void main(String[] args) {
+//        main.loaddata();
+//        new FrameDelete();
+//    }
+}
