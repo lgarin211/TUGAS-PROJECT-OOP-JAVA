@@ -28,22 +28,6 @@ public class FrameLihat extends JFrame {
         Lihat.setText("Lihat Produk");
         Lihat.setToolTipText("");
         getContentPane().add(Lihat);
-        int a=0;
-        main.DataProduk.removeAll(main.DataProduk);
-        main.loaddata();
-
-        for (TambahProdukFrame l : main.DataProduk) {
-            data[a][0] = l.id;
-            data[a][1] = l.getNama();
-            data[a][2] = l.getHarga();
-            data[a][3] = l.getStok();
-            for (Object[] objects : data) {
-                System.out.println(objects[0] + " " + objects[1] + " " + objects[2] + " " + objects[3]);
-            }
-            a++;
-        }
-
-
 
         TextPot = new JPanel();
         TextPot.setLocation(0, 100);
@@ -61,7 +45,7 @@ public class FrameLihat extends JFrame {
             model.addRow(newcolumnNames);
         }
 
-        setTitle("FrameLihat");
+        setTitle("FreamLihat");
         setSize(800, 600);
         setVisible(true);
         setResizable(true);

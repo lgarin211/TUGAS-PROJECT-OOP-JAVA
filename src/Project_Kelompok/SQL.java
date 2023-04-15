@@ -79,7 +79,7 @@ public class SQL {
     }
 
     private void delete(String query) throws ClassNotFoundException, SQLException {
-        rs = st.executeQuery(query);
+        st.executeUpdate(query);
     }
 
 }
