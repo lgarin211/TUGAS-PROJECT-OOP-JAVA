@@ -6,6 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Login extends JFrame {
+
     JTextArea Username;
     JPasswordField password;
     JButton untitled_3;

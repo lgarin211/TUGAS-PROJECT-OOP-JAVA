@@ -1,50 +1,70 @@
 package Project_Kelompok;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class FrameMenu extends JFrame {
-    JButton MenuTambahProduk;
-    JButton MenuUpdateProduk;
-    JButton MenuKasir;
-    JButton MenuLihatProduk;
+    private JPanel panelUtama = new JPanel(new GridLayout(3, 2));
+    private JPanel panelBarisDua = new JPanel(new GridLayout(1, 2));
+    private JPanel panelBarisTiga = new JPanel(new GridLayout(1, 2));
+    private JButton MenuDeleteProduk = new JButton("Delete Produk");
+    private JButton MenuTambahProduk = new JButton("Tambah Produk");
+    private JButton MenuUpdateProduk = new JButton("Update Produk");
+    private JButton MenuKasir = new JButton("Kasir");
+    private JButton MenuLihatProduk = new JButton("Lihat Produk");
 
     public FrameMenu() {
-        this.setLayout(null);
-        setupGUI();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panelBarisDua.add(MenuTambahProduk);
+        panelBarisDua.add(MenuUpdateProduk);
+        panelBarisTiga.add(MenuDeleteProduk);
+        panelBarisTiga.add(MenuLihatProduk);
+
+        panelUtama.add(MenuKasir);
+        panelUtama.add(panelBarisDua);
+        panelUtama.add(panelBarisTiga);
+        add(panelUtama);
+        Menu();
+        setSize(400, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
-    void setupGUI() {
-        MenuTambahProduk = new JButton();
-        MenuTambahProduk.setLocation(100, 35);
-        MenuTambahProduk.setSize(100, 100);
-        MenuTambahProduk.setText("Tambah Produk");
-        add(MenuTambahProduk);
+    public void Menu() {
 
-        MenuUpdateProduk = new JButton();
-        MenuUpdateProduk.setLocation(200, 35);
-        MenuUpdateProduk.setSize(100, 100);
-        MenuUpdateProduk.setText("Update Produk");
-        add(MenuUpdateProduk);
+        MenuKasir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new FrameKasir();
+            }
+        });
 
-        MenuKasir = new JButton();
-        MenuKasir.setLocation(100, 135);
-        MenuKasir.setSize(100, 100);
-        MenuKasir.setText("Kasir");
-        add(MenuKasir);
+        MenuTambahProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new TambahProdukFrame();
+            }
+        });
 
-        MenuLihatProduk = new JButton();
-        MenuLihatProduk.setLocation(200, 135);
-        MenuLihatProduk.setSize(100, 100);
-        MenuLihatProduk.setText("Lihat Produk");
-        add(MenuLihatProduk);
+        MenuUpdateProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FrameUpdate();
+            }
+        });
 
-        setTitle("Frame Menu");
-        setSize(400, 400);
-        setVisible(true);
-        setResizable(true);
+        MenuLihatProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FrameLihat();
+            }
+        });
 
+        MenuDeleteProduk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // new FrameDelete();
+            }
+        });
     }
 
     public static void main(String args[]) {

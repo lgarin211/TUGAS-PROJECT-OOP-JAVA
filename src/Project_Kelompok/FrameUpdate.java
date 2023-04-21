@@ -1,4 +1,6 @@
 package Project_Kelompok;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class FrameUpdate extends JFrame {
@@ -9,6 +11,7 @@ public class FrameUpdate extends JFrame {
     JLabel labelStok;
     JButton updateButton;
 
+    
 
     public FrameUpdate(){
         getContentPane().setLayout(null);

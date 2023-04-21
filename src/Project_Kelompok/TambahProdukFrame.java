@@ -34,6 +34,8 @@ public class TambahProdukFrame extends JFrame {
 
         setSize(400, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // Default close operation open freameMenu
+        //        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 
 
