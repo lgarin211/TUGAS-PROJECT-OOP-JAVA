@@ -25,7 +25,7 @@ public class FrameMenu extends JFrame {
         panelUtama.add(panelBarisTiga);
         add(panelUtama);
         this.Menu();
-        this.setSize(400, 400);
+        this.setSize(1000, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
         System.out.println("Ready?");

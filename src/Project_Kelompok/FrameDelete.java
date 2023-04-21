@@ -16,12 +16,12 @@ public class FrameDelete extends JFrame {
     public FrameDelete() {
         headerFrameDelete.setHorizontalAlignment(SwingConstants.CENTER);
         PanelAtas.add(headerFrameDelete);
-//        add(headerFrameDelete, BorderLayout.NORTH);
+        // add(headerFrameDelete, BorderLayout.NORTH);
         for (TambahProdukFrame l : main.DataProduk) {
             listBarang.addItem(l.getNama());
         }
         PanelAtas.add(listBarang);
-//        centerPanel.add(nyoba);
+        // centerPanel.add(nyoba);
         add(PanelAtas, BorderLayout.NORTH);
         deleteButton.setHorizontalAlignment(SwingConstants.CENTER);
         panelDelete.add(deleteButton);
@@ -31,48 +31,48 @@ public class FrameDelete extends JFrame {
         deleteProduk();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-        setSize(400, 400);
+        this.setSize(1000, 700);
     }
-        public void deleteProduk(){
-//            TambahProdukFrame newFrame = new TambahProdukFrame();
-            deleteButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    for(TambahProdukFrame l : main.DataProduk){
-                        if(l.getNama().equals(listBarang.getSelectedItem())){
-                            String commend =("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama()+"'");
-                            System.out.println(commend);
-                            new SQL().SetupConeksi(commend, "Delete");
 
-                            main.DataProduk.clear();
-                            main.loaddata();
-                            setVisible(false);
-                            new FrameDelete();
-                        }
+    public void deleteProduk() {
+        // TambahProdukFrame newFrame = new TambahProdukFrame();
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (TambahProdukFrame l : main.DataProduk) {
+                    if (l.getNama().equals(listBarang.getSelectedItem())) {
+                        String commend = ("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama() + "'");
+                        System.out.println(commend);
+                        new SQL().SetupConeksi(commend, "Delete");
+
+                        main.DataProduk.clear();
+                        main.loaddata();
+                        setVisible(false);
+                        new FrameDelete();
                     }
                 }
-            });
+            }
+        });
 
-            deleteAllButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    for(TambahProdukFrame l : main.DataProduk){
-                            String commend =("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama()+"'");
-                            System.out.println(commend);
-                            new SQL().SetupConeksi(commend, "Delete");
-//                        }
-                    }
-                    main.DataProduk.clear();
-                    main.loaddata();
-                    setVisible(false);
-                    new FrameDelete();
+        deleteAllButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (TambahProdukFrame l : main.DataProduk) {
+                    String commend = ("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama() + "'");
+                    System.out.println(commend);
+                    new SQL().SetupConeksi(commend, "Delete");
+                    // }
                 }
-            });
-        }
+                main.DataProduk.clear();
+                main.loaddata();
+                setVisible(false);
+                new FrameDelete();
+            }
+        });
+    }
 
-
-//    public static void main(String[] args) {
-//        main.loaddata();
-//        new FrameDelete();
-//    }
+    // public static void main(String[] args) {
+    // main.loaddata();
+    // new FrameDelete();
+    // }
 }

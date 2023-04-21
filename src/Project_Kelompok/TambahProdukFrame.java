@@ -42,7 +42,7 @@ public class TambahProdukFrame extends JFrame {
         add(panelUtama);
         setVisible(true);
         tambahProduk();
-        setSize(400, 400);
+        this.setSize(1000, 700);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
 

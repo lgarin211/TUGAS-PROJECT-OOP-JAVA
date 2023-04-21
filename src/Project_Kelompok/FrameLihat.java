@@ -58,7 +58,7 @@ public class FrameLihat extends JFrame {
         FindProduct(model);
 
         setTitle("FreamLihat");
-        setSize(800, 600);
+        this.setSize(1000, 700);
         setVisible(true);
         setResizable(true);
 

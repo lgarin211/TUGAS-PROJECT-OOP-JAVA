@@ -55,7 +55,7 @@ public class Login extends JFrame {
 
         setTitle("LOGIN");
         RunLogin();
-        setSize(400, 400);
+        this.setSize(1000, 700);
         setVisible(true);
         setResizable(true);
 

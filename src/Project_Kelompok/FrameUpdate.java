@@ -42,7 +42,7 @@ public class FrameUpdate extends JFrame implements ActionListener {
         footerPanel.add(updateButton);
         add(footerPanel, BorderLayout.SOUTH);
 
-        setSize(400, 400);
+        this.setSize(1000, 700);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
 
