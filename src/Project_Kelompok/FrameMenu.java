@@ -24,10 +24,11 @@ public class FrameMenu extends JFrame {
         panelUtama.add(panelBarisDua);
         panelUtama.add(panelBarisTiga);
         add(panelUtama);
-        Menu();
-        setSize(400, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
+        this.Menu();
+        this.setSize(400, 400);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setVisible(true);
+        System.out.println("Ready?");
     }
 
     public void Menu() {

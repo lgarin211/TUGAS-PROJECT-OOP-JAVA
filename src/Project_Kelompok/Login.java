@@ -8,7 +8,7 @@ public class Login extends JFrame {
     private JTextArea Username;
     private JPasswordField password;
     private JButton TombolLogin;
-    private JLabel TEXTOFALERT;
+    protected JLabel TEXTOFALERT;
 
     public static void main(String args[]) {
         new Login();

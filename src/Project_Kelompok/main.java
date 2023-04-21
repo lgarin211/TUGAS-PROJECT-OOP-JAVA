@@ -3,10 +3,56 @@ package Project_Kelompok;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.awt.Desktop;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.print.*;
+import java.io.IOException;
 
 public class main {
 
     public static ArrayList<TambahProdukFrame> DataProduk = new ArrayList<>();
+
+    public static void printToImage(JFrame frame, String imagePath) {
+        try {
+            BufferedImage image = new BufferedImage(frame.getWidth(), frame.getHeight(), BufferedImage.TYPE_INT_RGB);
+            Graphics2D graphics2D = image.createGraphics();
+            frame.print(graphics2D);
+            ImageIO.write(image, "jpg", new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void printToPrinter(JFrame frame) {
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(new Printable() {
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if (pageIndex > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D g2 = (Graphics2D) graphics;
+                g2.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+                frame.printAll(graphics);
+                return Printable.PAGE_EXISTS;
+            }
+        });
+        try {
+            job.print();
+        } catch (PrinterException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void loaddata() {
         DataProduk.clear();
@@ -18,18 +64,26 @@ public class main {
         new SQL().SetupConeksi(query, "Read");
     }
 
-    public static void login() {
-        Login newFream = new Login();
-        newFream.setTitle("LOGIN");
-        newFream.untitled_3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String Mail = newFream.Username.getText();
-                String Pass = newFream.password.getText();
-                // PARSE TO INTEGER
-                // Pass = Integer.parseInt(newFream.password.getText());
-                login(Mail, Pass, newFream);
-            }
-        });
+    // public static void login() {
+    // Login newFream = new Login();
+    // newFream.setTitle("LOGIN");
+    // newFream.untitled_3.addActionListener(new ActionListener() {
+    // public void actionPerformed(ActionEvent e) {
+    // String Mail = newFream.Username.getText();
+    // String Pass = newFream.password.getText();
+    // // PARSE TO INTEGER
+    // // Pass = Integer.parseInt(newFream.password.getText());
+    // login(Mail, Pass, newFream);
+    // }
+    // });
+    // }
+
+    public static void main(String[] args) {
+        loaddata();
+        JFrame Tag = new FrameMenu();
+        main.printToPrinter(Tag);
+
+        // new Login().Login();
     }
 
     public static void login(String Mail, String Pass, Login Fr) {

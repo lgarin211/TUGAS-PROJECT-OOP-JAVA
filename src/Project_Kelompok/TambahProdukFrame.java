@@ -43,9 +43,8 @@ public class TambahProdukFrame extends JFrame {
         setVisible(true);
         tambahProduk();
         setSize(400, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-
 
     }
 
