@@ -62,7 +62,7 @@ public class FrameMenu extends JFrame {
         MenuDeleteProduk.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // new FrameDelete();
+                new FrameDelete();
             }
         });
     }

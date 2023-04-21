@@ -4,56 +4,18 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-
 public class main {
-    public static void main(String[] args) {
-        // login();
-        tambahProduk();
+
+    public static ArrayList<TambahProdukFrame> DataProduk = new ArrayList<>();
+
+    public static void loaddata() {
+        DataProduk.clear();
+        new SQL().SetupConeksi("SELECT * FROM dataproduk", "Read");
     }
 
-    public static ArrayList<TambahProdukFrame> listTambahProduk = new ArrayList<TambahProdukFrame>();
-
-    public static void tambahProduk() {
-
-        TambahProdukFrame newFream = new TambahProdukFrame();
-        newFream.buttonTambah.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int hargaProdukBaru = 0, tanda2 = 1, tanda3 = 1;
-                int stokProdukBaru = 0;
-                String namaProdukBaru = newFream.getNama();
-
-                try {
-                    tanda2 = 1;
-                    hargaProdukBaru = newFream.getHarga();
-                } catch (NumberFormatException exception) {
-                    tanda2 = 2;
-                    System.out.println("Please input number for Harga Produk Baru");
-                }
-
-                try {
-                    tanda3 = 1;
-                    stokProdukBaru = newFream.getStok();
-                } catch (NumberFormatException exception) {
-                    tanda3 = 2;
-                    System.out.println("Please input number for Stok Produk Baru");
-                }
-
-                if (tanda2 == 1 && tanda3 == 1) {
-                    getDataTambahProduk(namaProdukBaru, hargaProdukBaru, stokProdukBaru);
-                    listTambahProduk.add(newFream);
-                }
-            }
-        });
-    }
-
-    static void getDataTambahProduk(String namaProdukBaru, int hargaProdukBaru, int stokProdukBaru) {
-        System.out.println("Nama : " + namaProdukBaru);
-        System.out.println("Harga : " + hargaProdukBaru);
-        System.out.println("Stok : " + stokProdukBaru);
+    public static void loaddata(String query) {
+        DataProduk.clear();
+        new SQL().SetupConeksi(query, "Read");
     }
 
     public static void login() {
