@@ -5,18 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Login extends JFrame {
-<<<<<<< HEAD
-
-    JTextArea Username;
-    JPasswordField password;
-    JButton untitled_3;
-    JLabel TEXTOFALERT;
-=======
     private JTextArea Username;
     private JPasswordField password;
     private JButton TombolLogin;
     private JLabel TEXTOFALERT;
->>>>>>> 5fe9e1de9942d62c06da9c65a242f5d9a6a87b8c
 
     public static void main(String args[]) {
         new Login();
