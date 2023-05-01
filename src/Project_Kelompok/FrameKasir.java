@@ -40,6 +40,7 @@ public class FrameKasir extends JFrame {
     JButton checkout = new JButton("Checkout");
 
     int summary = 0;
+    int QTY = 0;
 
     public FrameKasir() {
         for (TambahProdukFrame l : main.DataProduk) {
@@ -73,15 +74,20 @@ public class FrameKasir extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 for (TambahProdukFrame l : main.DataProduk) {
                     if (l.getNama().equals(listBarang.getSelectedItem())) {
-                        Object[] newcolumnNames = { i, listBarang.getSelectedItem(), l.getHarga(),
-                                quantityField.getText() };
-                        model.addRow(newcolumnNames);
-                        i++;
                         int qty = Integer.parseInt(quantityField.getText().toString());
-                        int price = l.getHarga();
-                        summary += qty * price;
-                        System.out.println(summary);
-                        sum.setText(String.valueOf(summary));
+                        if (qty > QTY) {
+                            System.out.println("Terlalu Banyak Stok Tidak Cukup");
+                            Alert.Alert("Stok Melebihi Ketentuan");
+                        } else {
+                            Object[] newcolumnNames = { i, listBarang.getSelectedItem(), l.getHarga(),
+                                    quantityField.getText() };
+                            model.addRow(newcolumnNames);
+                            i++;
+                            int price = l.getHarga();
+                            summary += qty * price;
+                            System.out.println(summary);
+                            sum.setText(String.valueOf(summary));
+                        }
                     }
                 }
 
@@ -102,6 +108,7 @@ public class FrameKasir extends JFrame {
                 for (TambahProdukFrame l : main.DataProduk) {
                     if (l.getNama().equals(listBarang.getSelectedItem())) {
                         hargaField.setText(l.getHarga().toString());
+                        QTY = l.getStok();
                     }
                 }
             }
@@ -119,9 +126,4 @@ public class FrameKasir extends JFrame {
         });
     }
 
-    
-
-    public static void main(String[] args) {
-        new FrameKasir();
-    }
 }

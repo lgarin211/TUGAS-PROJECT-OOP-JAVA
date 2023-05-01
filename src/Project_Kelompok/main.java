@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import java.awt.print.*;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 public class main {
 
@@ -80,4 +81,10 @@ public class main {
         }
     }
 
+}
+
+class Alert {
+    public static void Alert(String pesan) {
+        JOptionPane.showMessageDialog(null, pesan, "Error", JOptionPane.WARNING_MESSAGE);
+    }
 }
