@@ -72,11 +72,11 @@ public class SQL {
         rs = st.executeQuery(query);
         while (rs.next()) {
             String id = rs.getString("id");
-            String nama = rs.getString("Nama_produk");
-            String harga = rs.getString("Harga");
-            String stok = rs.getString("Stok");
-            TambahProdukFrame item = new TambahProdukFrame(id, nama, harga, stok);
-            main.DataProduk.add(item);
+            String pembeli = rs.getString("Pembeli");
+            String harga = rs.getString("Total");
+            String Item = rs.getString("Barang");
+            String tgl = rs.getString("tanggal");
+            FrameCheckOut item = new FrameCheckOut(id, pembeli, harga, Item, tgl);
         }
     }
 
