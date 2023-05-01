@@ -126,7 +126,6 @@ public class FrameKasir extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 main.printToPrinter(new FrameCheckOut(namaPembeliField.getText().toString(), LocalDate.now().toString(),model, summary));
-
             }
         });
     }
