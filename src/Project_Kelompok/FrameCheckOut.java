@@ -31,8 +31,9 @@ public class FrameCheckOut extends JFrame {
     JLabel totalBelanja = new JLabel();
     int TotalHarga = 0;
     String Date;
+    String Belanjaan="";
 
-    public FrameCheckOut(String Nama, String Datenow, DefaultTableModel model, int summary) {
+    public FrameCheckOut(String Nama, String Datenow, DefaultTableModel model, int summary, String Belanjaan) {
 
         add(PanelTop, BorderLayout.NORTH);
         namaPembeli.setText(Nama);
