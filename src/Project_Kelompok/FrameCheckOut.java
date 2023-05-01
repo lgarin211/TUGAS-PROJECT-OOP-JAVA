@@ -29,8 +29,8 @@ public class FrameCheckOut extends JFrame {
     JPanel BottomPanel = new JPanel(new GridLayout(1, 2));
     JLabel labelTotal = new JLabel("Total");
     JLabel totalBelanja = new JLabel();
-
     int TotalHarga = 0;
+    String Date;
 
     public FrameCheckOut(String Nama, String Datenow, DefaultTableModel model, int summary) {
 
@@ -50,6 +50,7 @@ public class FrameCheckOut extends JFrame {
         BottomPanel.add(labelTotal);
         totalBelanja.setText(String.valueOf(summary));
         BottomPanel.add(totalBelanja);
+        Date = Datenow;
 
         setResizable(false);
         setSize(290, 297);
