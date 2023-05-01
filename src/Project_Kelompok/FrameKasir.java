@@ -12,6 +12,8 @@ import java.beans.Visibility;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class FrameKasir extends JFrame {
     JPanel namaPembeliPanel = new JPanel(new GridLayout(4, 2, 0, 25));
@@ -131,6 +133,11 @@ public class FrameKasir extends JFrame {
                         LocalDate.now().toString(),
                         model, summary);
                 main.printToPrinter(newone);
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
+                String timestamp = now.format(formatter);
+                String filename = "out/" + timestamp + ".jpg";
+                main.printToImage(newone, filename);
                 main.DataTransaksi.add(newone);
                 String a = "";
                 for (int i = 0; i < model.getRowCount(); i++) {
