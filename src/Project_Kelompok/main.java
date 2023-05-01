@@ -66,6 +66,7 @@ public class main {
 
     public static void main(String[] args) {
         loaddata();
+        loadTransaksi();
         JFrame tag = new FrameMenu();
     }
 
