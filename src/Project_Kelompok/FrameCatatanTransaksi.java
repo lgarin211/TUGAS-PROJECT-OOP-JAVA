@@ -17,6 +17,7 @@ public class FrameCatatanTransaksi extends JFrame {
     public static Object data[][];
     private JLabel labelListBarang;
     String bikinString = "";
+    int count = 0;
 
     FrameCatatanTransaksi(){
         panelAtas.add(TanggalLabel);
@@ -29,11 +30,11 @@ public class FrameCatatanTransaksi extends JFrame {
         JTable table = new JTable(model);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
-        for(String k : arrayListBarang){
-            k += "\n";
-            bikinString += k;
-        }
-        System.out.println(bikinString);
+//        for(String k : arrayListBarang){
+//            k += "\n";
+//            bikinString += k;
+//        }
+//        System.out.println(bikinString);
 //        labelListBarang = new JLabel();
 //        System.out.println(model.getRowCount());
 //        String nih = model.getValueAt(0, 3).toString();
@@ -41,12 +42,20 @@ public class FrameCatatanTransaksi extends JFrame {
 
 
         for(FrameCheckOut l : main.DataTransaksi){
-            System.out.println("Row count: " + l.model.getRowCount());
-            String nih3 = l.model.getValueAt(0, 1).toString();
-            System.out.println(nih3);
-            Object[] newcolumnNames = {"1", l.Date, l.namaPembeli.getText(), bikinString, l.TotalHarga};
+            count++;
+//            System.out.println("Row count: " + l.model.getRowCount());
+//            String nih3 = l.model.getValueAt(0, 1).toString();
+//            System.out.println(nih3);
+            for(int i = 0 ; i < l.model.getRowCount() ; i++){
+                bikinString += l.model.getValueAt(i, 1).toString();
+                if(i != l.model.getRowCount()-1){
+                    bikinString += ", ";
+                }
+            }
+            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), bikinString, l.TotalHarga};
             model.addRow(newcolumnNames);
         }
+        count = 0;
 
         FindProduct(model);
 
@@ -71,9 +80,11 @@ public class FrameCatatanTransaksi extends JFrame {
                     model.setRowCount(0);
                     main.loadTransaksi("SELECT * FROM DataTransaksi WHERE Date LIKE '%" + text + "%'");
                     for (FrameCheckOut l : main.DataTransaksi) {
-                            Object[] newcolumnNames = {"1", l.Date, l.namaPembeli.getText(), bikinString, l.TotalHarga};
+                        count++;
+                            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), bikinString, l.TotalHarga};
                             model.addRow(newcolumnNames);
                     }
+                    count = 0;
 //                        Object[] newcolumnNames = { l.no, l.tanggal, l.nama, l.namaBarang, l.totalHarga};
 //                        model.addRow(newcolumnNames);
                     }
