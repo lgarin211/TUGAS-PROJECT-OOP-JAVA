@@ -31,10 +31,19 @@ public class FrameCheckOut extends JFrame {
     JLabel totalBelanja = new JLabel();
     int TotalHarga = 0;
     String Date;
-    String Belanjaan="";
+    String Belanjaan = "";
+
+    public FrameCheckOut(String id, String pembeli, String harga, String Item, String tgl) {
+        Date = tgl;
+        Belanjaan = Item;
+        totalBelanja.setText(harga);
+        namaPembeli.setText(pembeli);
+        tanggalPembelian.setText(tgl);
+        main.DataTransaksi.add(this);
+    }
 
     public FrameCheckOut(String Nama, String Datenow, DefaultTableModel model, int summary, String Belanjaan) {
-        
+
         this.Belanjaan = Belanjaan;
 
         add(PanelTop, BorderLayout.NORTH);

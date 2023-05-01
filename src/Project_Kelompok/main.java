@@ -54,10 +54,14 @@ public class main {
         DataProduk.clear();
         new SQL().SetupConeksi("SELECT * FROM dataproduk", "Read");
     }
+    public static void loadTransaksi() {
+        DataTransaksi.clear();
+        new SQL().SetupConeksi("SELECT * FROM Transaksi", "Read2");
+    }
 
     public static void loadTransaksi(String query) {
         DataTransaksi.clear();
-        new SQL().SetupConeksi("SELECT * FROM Transaksi", "Read2");
+        new SQL().SetupConeksi(query, "Read2");
     }
 
     public static void loaddata(String query) {
@@ -67,6 +71,7 @@ public class main {
 
     public static void main(String[] args) {
         loaddata();
+        loadTransaksi();
         JFrame tag = new FrameMenu();
     }
 

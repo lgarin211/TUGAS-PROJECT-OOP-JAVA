@@ -78,7 +78,7 @@ public class FrameCatatanTransaksi extends JFrame {
                 String text = TanggalField.getText();
                 if (text.length() != 0) {
                     model.setRowCount(0);
-                    main.loadTransaksi("SELECT * FROM Transaksi WHERE Date LIKE '%" + text + "%'");
+                    main.loadTransaksi("SELECT * FROM Transaksi WHERE tanggal LIKE '%" + text + "%'");
                     for (FrameCheckOut l : main.DataTransaksi) {
                         count++;
                             Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), l.Belanjaan, l.TotalHarga};
