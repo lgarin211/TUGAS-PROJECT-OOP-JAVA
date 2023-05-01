@@ -34,6 +34,8 @@ public class FrameCheckOut extends JFrame {
     String Belanjaan="";
 
     public FrameCheckOut(String Nama, String Datenow, DefaultTableModel model, int summary, String Belanjaan) {
+        
+        this.Belanjaan = Belanjaan;
 
         add(PanelTop, BorderLayout.NORTH);
         namaPembeli.setText(Nama);
