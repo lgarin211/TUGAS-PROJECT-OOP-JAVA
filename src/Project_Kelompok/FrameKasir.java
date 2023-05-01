@@ -8,9 +8,12 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.Visibility;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class FrameKasir extends JFrame {
     JPanel namaPembeliPanel = new JPanel(new GridLayout(4, 2, 0, 25));
@@ -131,10 +134,27 @@ public class FrameKasir extends JFrame {
         checkout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                main.printToPrinter(new FrameCheckOut(namaPembeliField.getText().toString(), LocalDate.now().toString(),
-                        model, summary));
-                main.DataTransaksi.add(new FrameCheckOut(namaPembeliField.getText().toString(),
-                        LocalDate.now().toString(), model, summary));
+                FrameCheckOut newone = new FrameCheckOut(namaPembeliField.getText().toString(),
+                        LocalDate.now().toString(),
+                        model, summary);
+                main.printToPrinter(newone);
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
+                String timestamp = now.format(formatter);
+                String filename = "out/" + timestamp + ".jpg";
+                main.printToImage(newone, filename);
+                main.DataTransaksi.add(newone);
+                String a = "";
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    a += model.getValueAt(i, 1).toString() + "(" + model.getValueAt(i, 3).toString() + "),";
+                }
+
+                System.out.println(model.toString());
+                String commend = ("INSERT INTO Transaksi VALUES (NULL, '" + namaPembeliField.getText() + "', '"
+                        + summary
+                        + "', current_timestamp(),'" + a
+                        + "')");
+                new SQL().SetupConeksi(commend, "Insert");
             }
         });
     }

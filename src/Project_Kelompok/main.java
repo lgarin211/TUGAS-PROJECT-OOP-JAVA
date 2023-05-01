@@ -69,12 +69,6 @@ public class main {
     public static void main(String[] args) {
         loaddata();
         JFrame tag = new FrameMenu();
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
-        String timestamp = now.format(formatter);
-        String filename = "out/" + timestamp + ".jpg";
-        printToPrinter(tag);
-        printToImage(tag, filename);
     }
 
     public static void login(String Mail, String Pass, Login Fr) {
