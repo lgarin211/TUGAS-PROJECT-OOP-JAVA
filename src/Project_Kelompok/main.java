@@ -18,6 +18,7 @@ import java.util.*;
 public class main {
 
     public static ArrayList<TambahProdukFrame> DataProduk = new ArrayList<>();
+    public static ArrayList<FrameCheckOut> DataTransaksi = new ArrayList<>();
 
     public static void printToImage(JFrame frame, String imagePath) {
         try {
