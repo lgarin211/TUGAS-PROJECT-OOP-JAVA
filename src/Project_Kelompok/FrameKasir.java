@@ -1,17 +1,12 @@
 package Project_Kelompok;
 
-//Code Genarated by JGuiD
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.Visibility;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -31,13 +26,13 @@ public class FrameKasir extends JFrame {
     JTextField quantityField = new JTextField();
     JButton addButton = new JButton("Add");
 
-    public static String[] TableTitle = { "No", "Nama", "Harga", "Quantity" };
-    public static Object[][] TableData = {};
+    public String[] TableTitle = { "No", "Nama", "Harga", "Quantity" };
+    public Object[][] TableData = {};
 
-    static DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
-    static JTable table = new JTable(model);
+    DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
+    JTable table = new JTable(model);
 
-    public static JScrollPane scrollPane = new JScrollPane(table);
+    public JScrollPane scrollPane = new JScrollPane(table);
     int i = 1;
     JPanel checkoutButton = new JPanel(new GridLayout(1, 2));
     JTextField sum = new JTextField();
@@ -155,6 +150,7 @@ public class FrameKasir extends JFrame {
                         + "', current_timestamp(),'" + a
                         + "')");
                 new SQL().SetupConeksi(commend, "Insert");
+                dispose();
             }
         });
     }
