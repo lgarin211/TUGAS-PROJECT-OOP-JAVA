@@ -36,7 +36,7 @@ public class FrameCheckOut extends JFrame {
     public FrameCheckOut(String id, String pembeli, String harga, String Item, String tgl) {
         Date = tgl;
         Belanjaan = Item;
-        totalBelanja.setText(harga);
+        TotalHarga = Integer.parseInt(harga);
         namaPembeli.setText(pembeli);
         tanggalPembelian.setText(tgl);
         main.DataTransaksi.add(this);
