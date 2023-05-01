@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class FrameLihat extends JFrame {
     private JLabel Lihat;
+    private JLabel Cari;
     private JPanel TextPot;
     private JTextField FindProduk;
 
@@ -23,21 +24,28 @@ public class FrameLihat extends JFrame {
 
     void setupGUI() {
         Lihat = new JLabel();
-        Lihat.setLocation(350, 0);
-        Lihat.setSize(100, 100);
+        Lihat.setLocation(450, 0);
+        Lihat.setSize(200, 100);
         Lihat.setText("Lihat Produk");
         Lihat.setToolTipText("");
         getContentPane().add(Lihat);
 
+        Cari = new JLabel();
+        Cari.setLocation(300, 325);
+        Cari.setSize(200, 100);
+        Cari.setText("Cari Produk");
+        Cari.setToolTipText("");
+        getContentPane().add(Cari);
+
         TextPot = new JPanel();
         TextPot.setLocation(0, 100);
-        TextPot.setSize(800, 250);
-        TextPot.setBorder(BorderFactory.createLineBorder(Color.red));
+        TextPot.setSize(1000, 250);
+        // TextPot.setBorder(BorderFactory.createLineBorder(Color.red));
         getContentPane().add(TextPot);
 
         FindProduk = new JTextField();
-        FindProduk.setLocation(100, 350);
-        FindProduk.setSize(200, 50);
+        FindProduk.setLocation(400, 350);
+        FindProduk.setSize(300, 50);
         FindProduk.setToolTipText("Cari Produk");
         getContentPane().add(FindProduk);
 

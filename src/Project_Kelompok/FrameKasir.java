@@ -79,6 +79,7 @@ public class FrameKasir extends JFrame {
                             System.out.println("Terlalu Banyak Stok Tidak Cukup");
                             Alert.Alert("Stok Melebihi Ketentuan");
                         } else {
+                            QTY = QTY - qty;
                             Object[] newcolumnNames = { i, listBarang.getSelectedItem(), l.getHarga(),
                                     quantityField.getText() };
                             model.addRow(newcolumnNames);
@@ -87,6 +88,8 @@ public class FrameKasir extends JFrame {
                             summary += qty * price;
                             System.out.println(summary);
                             sum.setText(String.valueOf(summary));
+                            String commend = ("UPDATE dataproduk SET `Stok` = '" + QTY + "'" + " WHERE `dataproduk`.`Nama_produk` = '" + l.getNama() + "'");
+                            new SQL().SetupConeksi(commend, "Insert");
                         }
                     }
                 }
