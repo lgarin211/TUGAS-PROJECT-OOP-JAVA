@@ -46,13 +46,13 @@ public class FrameCatatanTransaksi extends JFrame {
 //            System.out.println("Row count: " + l.model.getRowCount());
 //            String nih3 = l.model.getValueAt(0, 1).toString();
 //            System.out.println(nih3);
-            for(int i = 0 ; i < l.model.getRowCount() ; i++){
-                bikinString += l.model.getValueAt(i, 1).toString();
-                if(i != l.model.getRowCount()-1){
-                    bikinString += ", ";
-                }
-            }
-            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), bikinString, l.TotalHarga};
+//            for(int i = 0 ; i < l.model.getRowCount() ; i++){
+//                bikinString += l.model.getValueAt(i, 1).toString();
+//                if(i != l.model.getRowCount()-1){
+//                    bikinString += ", ";
+//                }
+//            }
+            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), l.Belanjaan, l.TotalHarga};
             model.addRow(newcolumnNames);
         }
         count = 0;
@@ -78,10 +78,10 @@ public class FrameCatatanTransaksi extends JFrame {
                 String text = TanggalField.getText();
                 if (text.length() != 0) {
                     model.setRowCount(0);
-                    main.loadTransaksi("SELECT * FROM DataTransaksi WHERE Date LIKE '%" + text + "%'");
+                    main.loadTransaksi("SELECT * FROM Transaksi WHERE Date LIKE '%" + text + "%'");
                     for (FrameCheckOut l : main.DataTransaksi) {
                         count++;
-                            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), bikinString, l.TotalHarga};
+                            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), l.Belanjaan, l.TotalHarga};
                             model.addRow(newcolumnNames);
                     }
                     count = 0;

@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import java.awt.print.*;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.xml.crypto.Data;
 import java.util.*;
 
 public class main {
@@ -55,7 +56,7 @@ public class main {
     }
 
     public static void loadTransaksi(String query) {
-        DataProduk.clear();
+        DataTransaksi.clear();
         new SQL().SetupConeksi("SELECT * FROM Transaksi", "Read2");
     }
 
