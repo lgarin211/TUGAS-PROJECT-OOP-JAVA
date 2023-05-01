@@ -59,7 +59,7 @@ public class main {
     public static void main(String[] args) {
         loaddata();
         JFrame Tag = new FrameMenu();
-        main.printToPrinter(Tag);
+//        main.printToPrinter(Tag);
     }
 
     public static void login(String Mail, String Pass, Login Fr) {

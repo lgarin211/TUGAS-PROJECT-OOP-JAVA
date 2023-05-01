@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -124,6 +125,7 @@ public class FrameKasir extends JFrame {
         checkout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.printToPrinter(new FrameCheckOut(namaPembeliField.getText().toString(), LocalDate.now().toString(),model, summary));
 
             }
         });
