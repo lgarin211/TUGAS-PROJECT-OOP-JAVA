@@ -13,6 +13,8 @@ public class FrameMenu extends JFrame {
     private JButton MenuUpdateProduk = new JButton("Update Produk");
     private JButton MenuKasir = new JButton("Kasir");
     private JButton MenuLihatProduk = new JButton("Lihat Produk");
+    private JPanel panelBawahNyoba = new JPanel();
+    private JButton MenuCatatanTransaksi = new JButton("Catatan Transaksi");
 
     public FrameMenu() {
         panelBarisDua.add(MenuTambahProduk);
@@ -24,6 +26,9 @@ public class FrameMenu extends JFrame {
         panelUtama.add(panelBarisDua);
         panelUtama.add(panelBarisTiga);
         add(panelUtama);
+
+        panelBawahNyoba.add(MenuCatatanTransaksi);
+        add(panelBawahNyoba, BorderLayout.SOUTH);
         this.Menu();
         this.setSize(1000, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -64,6 +69,13 @@ public class FrameMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new FrameDelete();
+            }
+        });
+
+        MenuCatatanTransaksi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FrameCatatanTransaksi();
             }
         });
     }
