@@ -41,7 +41,7 @@ public class FrameKasir extends JFrame {
     int summary = 0;
     int QTY = 0;
 
-    public static ArrayList<String> BarangBeli = new ArrayList<>();
+//    public static ArrayList<String> BarangBeli = new ArrayList<>();
 
     public FrameKasir() {
         for (TambahProdukFrame l : main.DataProduk) {
@@ -85,7 +85,7 @@ public class FrameKasir extends JFrame {
                                     quantityField.getText() };
                             model.addRow(newcolumnNames);
                             //////////////////
-                            BarangBeli.add(listBarang.getSelectedItem().toString());
+//                            BarangBeli.add(listBarang.getSelectedItem().toString());
                             //////////////////
                             i++;
                             int price = l.getHarga();
@@ -156,7 +156,7 @@ public class FrameKasir extends JFrame {
     }
 
     public static void main(String[] args) {
-        BarangBeli.clear();
+//        BarangBeli.clear();
     }
 
 }
