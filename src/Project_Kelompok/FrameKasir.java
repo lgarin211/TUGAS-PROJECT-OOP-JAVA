@@ -1,17 +1,12 @@
 package Project_Kelompok;
 
-//Code Genarated by JGuiD
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.Visibility;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -150,6 +145,7 @@ public class FrameKasir extends JFrame {
                         + "', current_timestamp(),'" + a
                         + "')");
                 new SQL().SetupConeksi(commend, "Insert");
+                dispose();
             }
         });
     }
