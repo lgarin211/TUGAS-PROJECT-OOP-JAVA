@@ -129,9 +129,13 @@ public class FrameKasir extends JFrame {
         checkout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String a = "";
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    a += model.getValueAt(i, 1).toString() + "(" + model.getValueAt(i, 3).toString() + "),";
+                }
                 FrameCheckOut newone = new FrameCheckOut(namaPembeliField.getText().toString(),
                         LocalDate.now().toString(),
-                        model, summary);
+                        model, summary,a);
                 main.printToPrinter(newone);
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
@@ -139,10 +143,7 @@ public class FrameKasir extends JFrame {
                 String filename = "out/" + timestamp + ".jpg";
                 main.printToImage(newone, filename);
                 main.DataTransaksi.add(newone);
-                String a = "";
-                for (int i = 0; i < model.getRowCount(); i++) {
-                    a += model.getValueAt(i, 1).toString() + "(" + model.getValueAt(i, 3).toString() + "),";
-                }
+
 
                 System.out.println(model.toString());
                 String commend = ("INSERT INTO Transaksi VALUES (NULL, '" + namaPembeliField.getText() + "', '"
