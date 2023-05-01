@@ -124,7 +124,7 @@ public class FrameKasir extends JFrame {
         checkout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                
             }
         });
     }

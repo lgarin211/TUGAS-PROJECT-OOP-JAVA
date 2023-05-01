@@ -29,8 +29,8 @@ public class SQL {
                 read(query);
             } else if (Type.equals("Insert")) {
                 insert(query);
-            } else if (Type.equals("Update")) {
-                update(query);
+            } else if (Type.equals("Read2")) {
+                readTransaksi(query);
             } else if (Type.equals("Delete")) {
                 delete(query);
             }
@@ -57,6 +57,18 @@ public class SQL {
     }
 
     private void read(String query) throws ClassNotFoundException, SQLException {
+        rs = st.executeQuery(query);
+        while (rs.next()) {
+            String id = rs.getString("id");
+            String nama = rs.getString("Nama_produk");
+            String harga = rs.getString("Harga");
+            String stok = rs.getString("Stok");
+            TambahProdukFrame item = new TambahProdukFrame(id, nama, harga, stok);
+            main.DataProduk.add(item);
+        }
+    }
+
+    private void readTransaksi(String query) throws ClassNotFoundException, SQLException {
         rs = st.executeQuery(query);
         while (rs.next()) {
             String id = rs.getString("id");
