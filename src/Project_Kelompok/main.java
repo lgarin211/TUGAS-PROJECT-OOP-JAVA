@@ -56,7 +56,7 @@ public class main {
         new SQL().SetupConeksi("SELECT * FROM dataproduk", "Read");
     }
 
-    public static void loadTransaksi() {
+    public static void loadTransaksi(String query) {
         DataProduk.clear();
         new SQL().SetupConeksi("SELECT * FROM Transaksi", "Read2");
     }

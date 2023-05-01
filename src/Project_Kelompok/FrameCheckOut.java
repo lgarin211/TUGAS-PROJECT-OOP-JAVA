@@ -20,7 +20,7 @@ public class FrameCheckOut extends JFrame {
     // Panel Bawah
     public static String[] TableTitle = { "No", "Nama Barang", "Quantity", "Harga" };
     public static Object[][] TableData = {};
-    static DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
+    public static DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
     static JTable tabel = new JTable(model);
     static JPanel PanelCenter = new JPanel(new GridLayout(3, 2));
     public static JScrollPane scrollpane = new JScrollPane(tabel);
