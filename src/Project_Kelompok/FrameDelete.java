@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrameDelete extends JFrame {
+public class FrameDelete extends JFrame implements DeleteProduk {
     private JLabel headerFrameDelete = new JLabel("Delete Produk");
     private JPanel PanelAtas = new JPanel(new GridLayout(2, 1, 40, 0));
     private JComboBox listBarang = new JComboBox();
@@ -16,12 +16,10 @@ public class FrameDelete extends JFrame {
     public FrameDelete() {
         headerFrameDelete.setHorizontalAlignment(SwingConstants.CENTER);
         PanelAtas.add(headerFrameDelete);
-        // add(headerFrameDelete, BorderLayout.NORTH);
         for (TambahProdukFrame l : main.DataProduk) {
             listBarang.addItem(l.getNama());
         }
         PanelAtas.add(listBarang);
-        // centerPanel.add(nyoba);
         add(PanelAtas, BorderLayout.NORTH);
         deleteButton.setHorizontalAlignment(SwingConstants.CENTER);
         panelDelete.add(deleteButton);
@@ -61,7 +59,6 @@ public class FrameDelete extends JFrame {
                     String commend = ("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama() + "'");
                     System.out.println(commend);
                     new SQL().SetupConeksi(commend, "Delete");
-                    // }
                 }
                 main.DataProduk.clear();
                 main.loaddata();
@@ -70,9 +67,8 @@ public class FrameDelete extends JFrame {
             }
         });
     }
+}
 
-    // public static void main(String[] args) {
-    // main.loaddata();
-    // new FrameDelete();
-    // }
+interface DeleteProduk {
+    void deleteProduk();
 }

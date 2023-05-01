@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -93,7 +94,8 @@ public class FrameKasir extends JFrame {
                             summary += qty * price;
                             System.out.println(summary);
                             sum.setText(String.valueOf(summary));
-                            String commend = ("UPDATE dataproduk SET `Stok` = '" + QTY + "'" + " WHERE `dataproduk`.`Nama_produk` = '" + l.getNama() + "'");
+                            String commend = ("UPDATE dataproduk SET `Stok` = '" + QTY + "'"
+                                    + " WHERE `dataproduk`.`Nama_produk` = '" + l.getNama() + "'");
                             new SQL().SetupConeksi(commend, "Insert");
                         }
                     }
@@ -129,7 +131,10 @@ public class FrameKasir extends JFrame {
         checkout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                main.printToPrinter(new FrameCheckOut(namaPembeliField.getText().toString(), LocalDate.now().toString(),
+                        model, summary));
+                main.DataTransaksi.add(new FrameCheckOut(namaPembeliField.getText().toString(),
+                        LocalDate.now().toString(), model, summary));
             }
         });
     }

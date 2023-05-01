@@ -5,15 +5,20 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import java.awt.print.*;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import java.util.*;
 
 public class main {
 
     public static ArrayList<TambahProdukFrame> DataProduk = new ArrayList<>();
+    public static ArrayList<FrameCheckOut> DataTransaksi = new ArrayList<>();
 
     public static void printToImage(JFrame frame, String imagePath) {
         try {
@@ -51,6 +56,11 @@ public class main {
         new SQL().SetupConeksi("SELECT * FROM dataproduk", "Read");
     }
 
+    public static void loadTransaksi() {
+        DataProduk.clear();
+        new SQL().SetupConeksi("SELECT * FROM Transaksi", "Read2");
+    }
+
     public static void loaddata(String query) {
         DataProduk.clear();
         new SQL().SetupConeksi(query, "Read");
@@ -58,8 +68,13 @@ public class main {
 
     public static void main(String[] args) {
         loaddata();
-        JFrame Tag = new FrameMenu();
-        main.printToPrinter(Tag);
+        JFrame tag = new FrameMenu();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
+        String timestamp = now.format(formatter);
+        String filename = "out/" + timestamp + ".jpg";
+        printToPrinter(tag);
+        printToImage(tag, filename);
     }
 
     public static void login(String Mail, String Pass, Login Fr) {

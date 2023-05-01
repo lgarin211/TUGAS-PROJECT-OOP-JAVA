@@ -1,12 +1,18 @@
 package Project_Kelompok;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class FrameLihat extends JFrame {
+interface FrameLihatInterface<T> {
+    void setupGUI();
+
+    void findProduct(DefaultTableModel model, T searchQuery);
+}
+
+public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
     private JLabel Lihat;
     private JLabel Cari;
     private JPanel TextPot;
@@ -22,7 +28,8 @@ public class FrameLihat extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    void setupGUI() {
+    @Override
+    public void setupGUI() {
         Lihat = new JLabel();
         Lihat.setLocation(450, 0);
         Lihat.setSize(200, 100);
@@ -60,34 +67,34 @@ public class FrameLihat extends JFrame {
             model.addRow(newcolumnNames);
         }
 
-        FindProduct(model);
+        findProduct(model, null);
 
         setTitle("FreamLihat");
         this.setSize(1000, 700);
         setVisible(true);
         setResizable(true);
-
     }
 
-    private void FindProduct(DefaultTableModel model) {
+    @Override
+    public void findProduct(DefaultTableModel model, T searchQuery) {
         FindProduk.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 String text = FindProduk.getText();
                 if (text.length() != 0) {
                     model.setRowCount(0);
-                    main.loaddata("SELECT * FROM dataproduk WHERE Nama_produk LIKE '%" + text + "%'");
+                    String searchQuery = "SELECT * FROM dataproduk WHERE Nama_produk LIKE '%" + text + "%'";
+                    main.loaddata(searchQuery);
                     for (TambahProdukFrame l : main.DataProduk) {
                         Object[] newcolumnNames = { l.id, l.getNama(), l.getHarga(), l.getStok(), };
                         model.addRow(newcolumnNames);
                     }
                 }
             }
-
         });
     }
 
     public static void main(String args[]) {
-        new FrameLihat();
+        SwingUtilities.invokeLater(FrameLihat::new);
     }
 }
