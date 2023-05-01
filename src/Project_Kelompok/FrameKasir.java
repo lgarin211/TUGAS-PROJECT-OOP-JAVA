@@ -41,6 +41,8 @@ public class FrameKasir extends JFrame {
     int summary = 0;
     int QTY = 0;
 
+//    public static ArrayList<String> BarangBeli = new ArrayList<>();
+
     public FrameKasir() {
         for (TambahProdukFrame l : main.DataProduk) {
             listBarang.addItem(l.getNama());
@@ -82,6 +84,9 @@ public class FrameKasir extends JFrame {
                             Object[] newcolumnNames = { i, listBarang.getSelectedItem(), l.getHarga(),
                                     quantityField.getText() };
                             model.addRow(newcolumnNames);
+                            //////////////////
+//                            BarangBeli.add(listBarang.getSelectedItem().toString());
+                            //////////////////
                             i++;
                             int price = l.getHarga();
                             summary += qty * price;
@@ -126,7 +131,10 @@ public class FrameKasir extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String a = "";
                 for (int i = 0; i < model.getRowCount(); i++) {
-                    a += model.getValueAt(i, 1).toString() + "(" + model.getValueAt(i, 3).toString() + "),";
+                    a += model.getValueAt(i, 1).toString() + "(" + model.getValueAt(i, 3).toString() + ")";
+                    if(i != model.getRowCount()-1){
+                        a += "), ";
+                    }
                 }
                 FrameCheckOut newone = new FrameCheckOut(namaPembeliField.getText().toString(),
                         LocalDate.now().toString(),
@@ -149,6 +157,10 @@ public class FrameKasir extends JFrame {
                 dispose();
             }
         });
+    }
+
+    public static void main(String[] args) {
+//        BarangBeli.clear();
     }
 
 }

@@ -34,14 +34,12 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
         Lihat.setLocation(450, 0);
         Lihat.setSize(200, 100);
         Lihat.setText("Lihat Produk");
-        Lihat.setToolTipText("");
         getContentPane().add(Lihat);
 
         Cari = new JLabel();
         Cari.setLocation(300, 325);
         Cari.setSize(200, 100);
         Cari.setText("Cari Produk");
-        Cari.setToolTipText("");
         getContentPane().add(Cari);
 
         TextPot = new JPanel();
@@ -53,7 +51,6 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
         FindProduk = new JTextField();
         FindProduk.setLocation(400, 350);
         FindProduk.setSize(300, 50);
-        FindProduk.setToolTipText("Cari Produk");
         getContentPane().add(FindProduk);
 
         // add event on input text FindProduk
