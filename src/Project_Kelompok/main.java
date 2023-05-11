@@ -100,4 +100,7 @@ class Alert {
     public static void Alert(String pesan) {
         JOptionPane.showMessageDialog(null, pesan, "Error", JOptionPane.WARNING_MESSAGE);
     }
+    public static void succ(String pesan) {
+        JOptionPane.showMessageDialog(null, pesan, "Success", JOptionPane.PLAIN_MESSAGE);
+    }
 }

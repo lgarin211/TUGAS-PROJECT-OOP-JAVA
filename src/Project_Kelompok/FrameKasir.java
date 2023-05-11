@@ -133,7 +133,7 @@ public class FrameKasir extends JFrame {
                 for (int i = 0; i < model.getRowCount(); i++) {
                     a += model.getValueAt(i, 1).toString() + "(" + model.getValueAt(i, 3).toString() + ")";
                     if(i != model.getRowCount()-1){
-                        a += "), ";
+                        a += ", ";
                     }
                 }
                 FrameCheckOut newone = new FrameCheckOut(namaPembeliField.getText().toString(),
