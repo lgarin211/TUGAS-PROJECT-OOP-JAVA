@@ -55,7 +55,7 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
 
         // add event on input text FindProduk
 
-        String[] columnNames = { "No", "Nama", "Harga", "Quantity" };
+        String[] columnNames = { "ID PRODUK", "Nama", "Harga", "Quantity" };
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         JTable table = new JTable(model);
