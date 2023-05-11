@@ -62,6 +62,7 @@ public class FrameDelete extends JFrame implements DeleteProduk {
                 }
                 main.DataProduk.clear();
                 main.loaddata();
+                Alert.succ("Produk Berhasil di Update");
                 setVisible(false);
                 new FrameDelete();
             }
