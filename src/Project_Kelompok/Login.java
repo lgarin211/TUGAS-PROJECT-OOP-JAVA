@@ -24,7 +24,7 @@ public class Login extends JFrame {
         Username = new JTextArea();
         Username.setLocation(114, 114);
         Username.setSize(150, 30);
-        Username.setText("LOGIN");
+        Username.setText("admin");
         Username.setRows(5);
         Username.setColumns(5);
         getContentPane().add(Username);
@@ -32,7 +32,7 @@ public class Login extends JFrame {
         password = new JPasswordField();
         password.setLocation(114, 144);
         password.setSize(150, 30);
-        password.setText("admin");
+        password.setText("");
         password.setColumns(10);
         password.setEchoChar('*');
         getContentPane().add(password);
@@ -42,7 +42,7 @@ public class Login extends JFrame {
         TombolLogin = new JButton();
         TombolLogin.setLocation(164, 175);
         TombolLogin.setSize(100, 30);
-        TombolLogin.setText("admin");
+        TombolLogin.setText("LOGIN");
         getContentPane().add(TombolLogin);
 
         TEXTOFALERT = new JLabel();
@@ -55,7 +55,7 @@ public class Login extends JFrame {
 
         setTitle("LOGIN");
         RunLogin();
-        this.setSize(1000, 700);
+        this.setSize(400, 300);
         setVisible(true);
         setResizable(true);
 
@@ -79,7 +79,8 @@ public class Login extends JFrame {
             try {
                 Thread.sleep(1000);
                 this.dispose();
-                new FrameMenu().Menu();
+                // new FrameMenu().Menu();
+                new FrameMenu();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
