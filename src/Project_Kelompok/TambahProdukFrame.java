@@ -106,7 +106,8 @@ public class TambahProdukFrame extends JFrame {
                             + newFrame.getStok() + "', '" + newFrame.getHarga() + "')");
                     System.out.println(commend);
                     main.DataProduk.add(newFrame);
-                    new SQL().SetupConeksi(commend, "Update");
+                    new SQL().SetupConeksi(commend, "Insert");
+
                     newFrame.setVisible(false);
                     new TambahProdukFrame();
                 }
