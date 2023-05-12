@@ -107,7 +107,7 @@ public class TambahProdukFrame extends JFrame {
                     System.out.println(commend);
                     main.DataProduk.add(newFrame);
                     new SQL().SetupConeksi(commend, "Insert");
-
+                    Alert.succ("Produk Berhasil di Update");
                     newFrame.setVisible(false);
                     new TambahProdukFrame();
                 }

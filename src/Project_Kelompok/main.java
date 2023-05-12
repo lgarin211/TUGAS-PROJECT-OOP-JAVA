@@ -72,7 +72,8 @@ public class main {
     public static void main(String[] args) {
         loaddata();
         loadTransaksi();
-        JFrame tag = new FrameMenu();
+        new Login();
+        // JFrame tag = new FrameMenu();
     }
 
     public static void login(String Mail, String Pass, Login Fr) {
