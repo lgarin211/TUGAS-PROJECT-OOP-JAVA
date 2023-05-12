@@ -67,7 +67,7 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
             model.addRow(newcolumnNames);
         }
 
-//        findProduct(model, null);
+        findProduct(model, null);
 
         setTitle("FreamLihat");
         this.setSize(1000, 700);
