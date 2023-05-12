@@ -85,10 +85,17 @@ public class FrameCatatanTransaksi extends JFrame {
                             model.addRow(newcolumnNames);
                     }
                     count = 0;
-//                        Object[] newcolumnNames = { l.no, l.tanggal, l.nama, l.namaBarang, l.totalHarga};
-//                        model.addRow(newcolumnNames);
+                }else{
+                    model.setRowCount(0);
+                    main.loadTransaksi("SELECT * FROM Transaksi");
+                    for (FrameCheckOut l : main.DataTransaksi) {
+                        count++;
+                            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), l.Belanjaan, l.TotalHarga};
+                            model.addRow(newcolumnNames);
                     }
+                    count = 0;
                 }
+            }
 
         });
     }
