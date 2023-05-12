@@ -24,7 +24,7 @@ public class FrameCatatanTransaksi extends JFrame {
         panelAtas.add(TanggalField);
         add(panelAtas, BorderLayout.NORTH);
 
-        String[] columnNames = {"No", "Tanggal", "Nama", "Nama Barang", "Total Harga"};
+        String[] columnNames = {"ID TRANSAKSI", "Tanggal", "Nama", "Nama Barang", "Total Harga"};
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         JTable table = new JTable(model);
