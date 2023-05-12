@@ -89,6 +89,14 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
                         Object[] newcolumnNames = { l.id, l.getNama(), l.getHarga(), l.getStok(), };
                         model.addRow(newcolumnNames);
                     }
+                }else {
+                    model.setRowCount(0);
+                    String searchQuery = "SELECT * FROM dataproduk";
+                    main.loaddata(searchQuery);
+                    for (TambahProdukFrame l : main.DataProduk) {
+                        Object[] newcolumnNames = { l.id, l.getNama(), l.getHarga(), l.getStok(), };
+                        model.addRow(newcolumnNames);
+                    }
                 }
             }
         });
