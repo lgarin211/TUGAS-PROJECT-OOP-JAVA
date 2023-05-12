@@ -16,8 +16,16 @@ import java.util.*;
 
 public class main {
 
-    public static ArrayList<TambahProdukFrame> DataProduk = new ArrayList<>();
-    public static ArrayList<FrameCheckOut> DataTransaksi = new ArrayList<>();
+    private static ArrayList<TambahProdukFrame> DataProduk = new ArrayList<>();
+    private static ArrayList<FrameCheckOut> DataTransaksi = new ArrayList<>();
+
+    public static ArrayList<TambahProdukFrame> getDataProduk() {
+        return DataProduk;
+    }
+
+    public static ArrayList<FrameCheckOut> getDataTransaksi() {
+        return DataTransaksi;
+    }
 
     public static void printToImage(JFrame frame, String imagePath) {
         try {
@@ -50,21 +58,21 @@ public class main {
         }
     }
 
-    public static void loaddata() {
+    protected static void loaddata() {
         DataProduk.clear();
         new SQL().SetupConeksi("SELECT * FROM dataproduk", "Read");
     }
-    public static void loadTransaksi() {
+    protected static void loadTransaksi() {
         DataTransaksi.clear();
         new SQL().SetupConeksi("SELECT * FROM Transaksi", "Read2");
     }
 
-    public static void loadTransaksi(String query) {
+    protected static void loadTransaksi(String query) {
         DataTransaksi.clear();
         new SQL().SetupConeksi(query, "Read2");
     }
 
-    public static void loaddata(String query) {
+    protected static void loaddata(String query) {
         DataProduk.clear();
         new SQL().SetupConeksi(query, "Read");
     }
@@ -72,11 +80,11 @@ public class main {
     public static void main(String[] args) {
         loaddata();
         loadTransaksi();
+        System.out.println("Password for testing : admin");
         new Login();
-        // JFrame tag = new FrameMenu();
     }
 
-    public static void login(String Mail, String Pass, Login Fr) {
+    private static void login(String Mail, String Pass, Login Fr) {
         if (Mail.equals("admin") && Pass.equals("admin")) {
             System.out.println("Login Success");
             Fr.TEXTOFALERT.setText("Login Berhasil \nSelamat Datang " + Mail);

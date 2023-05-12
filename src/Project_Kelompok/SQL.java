@@ -5,10 +5,10 @@ import java.sql.*;
 import com.mysql.cj.jdbc.Driver;
 
 public class SQL {
-    String url = "jdbc:mysql://www.lagarin.my.id:3306/lagarinm_Project_OOP_PPTI15";
-    String driver = "com.mysql.cj.jdbc.Driver";
-    String username = "lagarinm_lagarinm";
-    String password = "Gsagustinus211";
+    private String url = "jdbc:mysql://www.lagarin.my.id:3306/lagarinm_Project_OOP_PPTI15";
+    private String driver = "com.mysql.cj.jdbc.Driver";
+    private String username = "lagarinm_lagarinm";
+    private String password = "Gsagustinus211";
 
     // String url = "jdbc:mysql://localhost:3306/java_pac";
     // String driver = "com.mysql.cj.jdbc.Driver";
@@ -19,7 +19,7 @@ public class SQL {
     Statement st = null;
     ResultSet rs = null;
 
-    public void SetupConeksi(String query, String Type) {
+    protected void SetupConeksi(String query, String Type) {
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url, username, password);
@@ -64,7 +64,7 @@ public class SQL {
             String harga = rs.getString("Harga");
             String stok = rs.getString("Stok");
             TambahProdukFrame item = new TambahProdukFrame(id, nama, harga, stok);
-            main.DataProduk.add(item);
+            main.getDataProduk().add(item);
         }
     }
 

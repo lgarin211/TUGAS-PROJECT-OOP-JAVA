@@ -30,8 +30,6 @@ public class FrameMenu extends JFrame {
         panelUtama.add(panelBarisTiga);
         add(panelUtama);
 
-//        panelBawahNyoba.add(MenuCatatanTransaksi);
-//        add(panelBawahNyoba, BorderLayout.SOUTH);
         this.Menu();
         this.setSize(1000, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -39,7 +37,7 @@ public class FrameMenu extends JFrame {
         System.out.println("Ready?");
     }
 
-    public void Menu() {
+    protected void Menu() {
 
         MenuKasir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

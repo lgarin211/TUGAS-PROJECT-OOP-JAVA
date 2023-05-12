@@ -18,10 +18,10 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
     private JPanel TextPot;
     private JTextField FindProduk;
 
-    public static Object data[][];
+    private Object data[][];
 
     public FrameLihat() {
-        main.DataProduk.clear();
+        main.getDataProduk().clear();
         main.loaddata();
         getContentPane().setLayout(null);
         setupGUI();
@@ -45,7 +45,6 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
         TextPot = new JPanel();
         TextPot.setLocation(0, 100);
         TextPot.setSize(1000, 250);
-        // TextPot.setBorder(BorderFactory.createLineBorder(Color.red));
         getContentPane().add(TextPot);
 
         FindProduk = new JTextField();
@@ -62,8 +61,8 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
         table.setPreferredScrollableViewportSize(new Dimension(700, 200));
         TextPot.add(new JScrollPane(table));
 
-        for (TambahProdukFrame l : main.DataProduk) {
-            Object[] newcolumnNames = { l.id, l.getNama(), l.getHarga(), l.getStok(), };
+        for (TambahProdukFrame l : main.getDataProduk()) {
+            Object[] newcolumnNames = { ("ARK-"+l.getId()), l.getNama(), l.getHarga(), l.getStok(), };
             model.addRow(newcolumnNames);
         }
 
@@ -85,16 +84,16 @@ public class FrameLihat<T> extends JFrame implements FrameLihatInterface<T> {
                     model.setRowCount(0);
                     String searchQuery = "SELECT * FROM dataproduk WHERE Nama_produk LIKE '%" + text + "%'";
                     main.loaddata(searchQuery);
-                    for (TambahProdukFrame l : main.DataProduk) {
-                        Object[] newcolumnNames = { l.id, l.getNama(), l.getHarga(), l.getStok(), };
+                    for (TambahProdukFrame l : main.getDataProduk()) {
+                        Object[] newcolumnNames = { ("ARK-"+l.getId()), l.getNama(), l.getHarga(), l.getStok(), };
                         model.addRow(newcolumnNames);
                     }
                 }else {
                     model.setRowCount(0);
                     String searchQuery = "SELECT * FROM dataproduk";
                     main.loaddata(searchQuery);
-                    for (TambahProdukFrame l : main.DataProduk) {
-                        Object[] newcolumnNames = { l.id, l.getNama(), l.getHarga(), l.getStok(), };
+                    for (TambahProdukFrame l : main.getDataProduk()) {
+                        Object[] newcolumnNames = { ("ARK-"+l.getId()), l.getNama(), l.getHarga(), l.getStok(), };
                         model.addRow(newcolumnNames);
                     }
                 }

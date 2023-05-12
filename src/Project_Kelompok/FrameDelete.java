@@ -16,7 +16,7 @@ public class FrameDelete extends JFrame implements DeleteProduk {
     public FrameDelete() {
         headerFrameDelete.setHorizontalAlignment(SwingConstants.CENTER);
         PanelAtas.add(headerFrameDelete);
-        for (TambahProdukFrame l : main.DataProduk) {
+        for (TambahProdukFrame l : main.getDataProduk()) {
             listBarang.addItem(l.getNama());
         }
         PanelAtas.add(listBarang);
@@ -33,18 +33,18 @@ public class FrameDelete extends JFrame implements DeleteProduk {
     }
 
     public void deleteProduk() {
-        // TambahProdukFrame newFrame = new TambahProdukFrame();
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (TambahProdukFrame l : main.DataProduk) {
+                for (TambahProdukFrame l : main.getDataProduk()) {
                     if (l.getNama().equals(listBarang.getSelectedItem())) {
                         String commend = ("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama() + "'");
                         System.out.println(commend);
                         new SQL().SetupConeksi(commend, "Delete");
 
-                        main.DataProduk.clear();
+                        main.getDataProduk().clear();
                         main.loaddata();
+                        Alert.succ("Produk berhasil dihapus");
                         setVisible(false);
                         new FrameDelete();
                     }
@@ -55,14 +55,14 @@ public class FrameDelete extends JFrame implements DeleteProduk {
         deleteAllButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (TambahProdukFrame l : main.DataProduk) {
+                for (TambahProdukFrame l : main.getDataProduk()) {
                     String commend = ("DELETE FROM dataproduk WHERE Nama_produk = '" + l.getNama() + "'");
                     System.out.println(commend);
                     new SQL().SetupConeksi(commend, "Delete");
                 }
-                main.DataProduk.clear();
+                main.getDataProduk().clear();
                 main.loaddata();
-                Alert.succ("Produk Berhasil di Update");
+                Alert.succ("Semua Produk berhasil dihapus");
                 setVisible(false);
                 new FrameDelete();
             }

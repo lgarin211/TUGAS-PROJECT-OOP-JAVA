@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class TambahProdukFrame extends JFrame {
-    public String id = "A";
+    private String id = "A";
     private JLabel headerTambahProduk = new JLabel("Tambah Produk");
     private JPanel panelUtama = new JPanel(new GridLayout(3, 2, 0, 50));
     private JLabel namaLabel = new JLabel("Nama Produk Baru: ");
@@ -16,14 +16,18 @@ public class TambahProdukFrame extends JFrame {
     private JTextField namaField = new JTextField();
     private JTextField hargaField = new JTextField();
     private JTextField stokField = new JTextField();
-    JPanel containerButton = new JPanel();
-    JButton buttonTambah = new JButton("Tambah");
+    private JPanel containerButton = new JPanel();
+    private JButton buttonTambah = new JButton("Tambah");
 
     public TambahProdukFrame(String index, String Nama, String Harga, String Stok) {
         namaField.setText(Nama);
         hargaField.setText(Harga);
         stokField.setText(Stok);
         id = index;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public TambahProdukFrame() {
@@ -68,15 +72,11 @@ public class TambahProdukFrame extends JFrame {
         this.stokField.setText(stokField);
     }
 
-    public void setNamaField(String namaField) {
-        this.namaField.setText(namaField);
-    }
-
     public static void main(String args[]) {
         new TambahProdukFrame();
     }
 
-    public void tambahProduk() {
+    private void tambahProduk() {
         TambahProdukFrame newFrame = this;
         newFrame.buttonTambah.addActionListener(new ActionListener() {
             @Override
@@ -105,9 +105,9 @@ public class TambahProdukFrame extends JFrame {
                     String commend = ("INSERT INTO dataproduk VALUES (NULL, '" + newFrame.getNama() + "', '"
                             + newFrame.getStok() + "', '" + newFrame.getHarga() + "')");
                     System.out.println(commend);
-                    main.DataProduk.add(newFrame);
+                    main.getDataProduk().add(newFrame);
                     new SQL().SetupConeksi(commend, "Insert");
-                    Alert.succ("Produk Berhasil di TAMBAH");
+                    Alert.succ("Produk berhasil ditambah");
                     newFrame.setVisible(false);
                     new TambahProdukFrame();
                 }
