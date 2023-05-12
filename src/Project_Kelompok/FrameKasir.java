@@ -41,10 +41,9 @@ public class FrameKasir extends JFrame {
     private int summary = 0;
     private int QTY = 0;
 
-//    public static ArrayList<String> BarangBeli = new ArrayList<>();
 
     public FrameKasir() {
-        for (TambahProdukFrame l : main.DataProduk) {
+        for (TambahProdukFrame l : main.getDataProduk()) {
             listBarang.addItem(l.getNama());
         }
 
@@ -64,7 +63,7 @@ public class FrameKasir extends JFrame {
 
         add(scrollPane);
 
-        for (TambahProdukFrame l : main.DataProduk) {
+        for (TambahProdukFrame l : main.getDataProduk()) {
             Object[] newcolumnNames = { l.getHarga() };
         }
 
@@ -73,7 +72,7 @@ public class FrameKasir extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (TambahProdukFrame l : main.DataProduk) {
+                for (TambahProdukFrame l : main.getDataProduk()) {
                     if (l.getNama().equals(listBarang.getSelectedItem())) {
                         int qty = Integer.parseInt(quantityField.getText().toString());
                         if (qty > QTY) {
@@ -84,9 +83,6 @@ public class FrameKasir extends JFrame {
                             Object[] newcolumnNames = { i, listBarang.getSelectedItem(), l.getHarga(),
                                     quantityField.getText() };
                             model.addRow(newcolumnNames);
-                            //////////////////
-//                            BarangBeli.add(listBarang.getSelectedItem().toString());
-                            //////////////////
                             i++;
                             int price = l.getHarga();
                             summary += qty * price;
@@ -113,7 +109,7 @@ public class FrameKasir extends JFrame {
         listBarang.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (TambahProdukFrame l : main.DataProduk) {
+                for (TambahProdukFrame l : main.getDataProduk()) {
                     if (l.getNama().equals(listBarang.getSelectedItem())) {
                         hargaField.setText(l.getHarga().toString());
                         QTY = l.getStok();
@@ -145,7 +141,7 @@ public class FrameKasir extends JFrame {
                 String timestamp = now.format(formatter);
                 String filename = "out/" + timestamp + ".jpg";
                 main.printToImage(newone, filename);
-                main.DataTransaksi.add(newone);
+                main.getDataTransaksi().add(newone);
 
 
                 System.out.println(model.toString());
@@ -160,7 +156,6 @@ public class FrameKasir extends JFrame {
     }
 
     public static void main(String[] args) {
-//        BarangBeli.clear();
     }
 
 }

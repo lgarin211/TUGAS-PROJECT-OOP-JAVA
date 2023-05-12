@@ -24,7 +24,7 @@ public class FrameUpdate extends JFrame implements ActionListener {
     public FrameUpdate() {
         headerUpdateProduk.setHorizontalAlignment(SwingConstants.CENTER);
         add(headerUpdateProduk, BorderLayout.NORTH);
-        for (TambahProdukFrame l : main.DataProduk) {
+        for (TambahProdukFrame l : main.getDataProduk()) {
             list.addItem(l.getNama());
         }
 
@@ -49,7 +49,7 @@ public class FrameUpdate extends JFrame implements ActionListener {
         list.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (TambahProdukFrame l : main.DataProduk) {
+                for (TambahProdukFrame l : main.getDataProduk()) {
                     if (l.getNama().equals(list.getSelectedItem())) {
                         updateHarga.setText(l.getHarga().toString());
                         updateStok.setText(l.getStok().toString());
@@ -61,14 +61,14 @@ public class FrameUpdate extends JFrame implements ActionListener {
         updateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int po = 0;
-                for (TambahProdukFrame l : main.DataProduk) {
+                for (TambahProdukFrame l : main.getDataProduk()) {
                     if (l.getNama().equals(list.getSelectedItem())) {
                         l.setHargaField(updateHarga.getText());
                         l.setStokField(updateStok.getText());
                         String commend = ("UPDATE dataproduk SET `Stok` = '" + updateStok.getText() + "', `Harga` = '"
                                 + updateHarga.getText() + "' WHERE `dataproduk`.`Nama_produk` = '" + l.getNama() + "'");
                         new SQL().SetupConeksi(commend, "Insert");
-                        Alert.succ("Produk Berhasil di Update");
+                        Alert.succ("Produk berhasil diupdate");
                     }
                 }
             }

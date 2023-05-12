@@ -61,7 +61,7 @@ public class Login extends JFrame {
 
     }
 
-    public void RunLogin() {
+    private void RunLogin() {
         TombolLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String Mail = Username.getText();
@@ -79,7 +79,6 @@ public class Login extends JFrame {
             try {
                 Thread.sleep(1000);
                 this.dispose();
-                // new FrameMenu().Menu();
                 new FrameMenu();
             } catch (InterruptedException e) {
                 e.printStackTrace();

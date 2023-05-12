@@ -18,12 +18,12 @@ public class FrameCheckOut extends JFrame {
     private JLabel tanggalPembelian = new JLabel("01 Mei 2023");
 
     // Panel Bawah
-    public static String[] TableTitle = { "No", "Nama Barang", "Quantity", "Harga" };
-    public static Object[][] TableData = {};
-    public static DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
-    static JTable tabel = new JTable(model);
-    static JPanel PanelCenter = new JPanel(new GridLayout(3, 2));
-    public static JScrollPane scrollpane = new JScrollPane(tabel);
+    private String[] TableTitle = { "No", "Nama Barang", "Quantity", "Harga" };
+    private Object[][] TableData = {};
+    private DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
+    private JTable tabel = new JTable(model);
+    private JPanel PanelCenter = new JPanel(new GridLayout(3, 2));
+    private JScrollPane scrollpane = new JScrollPane(tabel);
 
     // Panel Buat Jumlah Harganya
     private JPanel BottomPanel = new JPanel(new GridLayout(1, 2));
@@ -53,7 +53,7 @@ public class FrameCheckOut extends JFrame {
         TotalHarga = Integer.parseInt(harga);
         namaPembeli.setText(pembeli);
         tanggalPembelian.setText(tgl);
-        main.DataTransaksi.add(this);
+        main.getDataTransaksi().add(this);
     }
 
     public FrameCheckOut(String Nama, String Datenow, DefaultTableModel model, int summary, String Belanjaan) {
@@ -83,9 +83,5 @@ public class FrameCheckOut extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-
-    // public static void main(String[] args) {
-    // new FrameCheckOut();
-    // }
 
 }
