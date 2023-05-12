@@ -52,7 +52,7 @@ public class FrameCatatanTransaksi extends JFrame {
 //                    bikinString += ", ";
 //                }
 //            }
-            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), l.Belanjaan, l.TotalHarga};
+            Object[] newcolumnNames = {count, l.getDate(), l.getNamaPembeli().getText(), l.getBelanjaan(), l.getTotalHarga()};
             model.addRow(newcolumnNames);
         }
         count = 0;
@@ -81,7 +81,7 @@ public class FrameCatatanTransaksi extends JFrame {
                     main.loadTransaksi("SELECT * FROM Transaksi WHERE tanggal LIKE '%" + text + "%'");
                     for (FrameCheckOut l : main.DataTransaksi) {
                         count++;
-                            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), l.Belanjaan, l.TotalHarga};
+                            Object[] newcolumnNames = {count, l.getDate(), l.getNamaPembeli().getText(), l.getBelanjaan(), l.getTotalHarga()};
                             model.addRow(newcolumnNames);
                     }
                     count = 0;
@@ -90,7 +90,7 @@ public class FrameCatatanTransaksi extends JFrame {
                     main.loadTransaksi("SELECT * FROM Transaksi");
                     for (FrameCheckOut l : main.DataTransaksi) {
                         count++;
-                            Object[] newcolumnNames = {count, l.Date, l.namaPembeli.getText(), l.Belanjaan, l.TotalHarga};
+                            Object[] newcolumnNames = {count, l.getDate(), l.getNamaPembeli().getText(), l.getBelanjaan(), l.getTotalHarga()};
                             model.addRow(newcolumnNames);
                     }
                     count = 0;

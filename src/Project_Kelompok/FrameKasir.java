@@ -11,35 +11,35 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class FrameKasir extends JFrame {
-    JPanel namaPembeliPanel = new JPanel(new GridLayout(4, 2, 0, 25));
-    JLabel namaPembeliLabel = new JLabel("Nama Pembeli");
-    JTextField namaPembeliField = new JTextField();
+    private JPanel namaPembeliPanel = new JPanel(new GridLayout(4, 2, 0, 25));
+    private JLabel namaPembeliLabel = new JLabel("Nama Pembeli");
+    private JTextField namaPembeliField = new JTextField();
 
-    JPanel centerPanel = new JPanel(new GridLayout(3, 2, 0, 25));
-    JLabel barangLabel = new JLabel("Barang");
-    JComboBox listBarang = new JComboBox();
-    JLabel hargaLabel = new JLabel("Harga");
-    JTextField hargaField = new JTextField(20);
-    JLabel quantityLabel = new JLabel("Quantity");
+    private JPanel centerPanel = new JPanel(new GridLayout(3, 2, 0, 25));
+    private JLabel barangLabel = new JLabel("Barang");
+    private JComboBox listBarang = new JComboBox();
+    private JLabel hargaLabel = new JLabel("Harga");
+    private JTextField hargaField = new JTextField(20);
+    private JLabel quantityLabel = new JLabel("Quantity");
 
-    JPanel addQuantityPanel = new JPanel(new GridLayout(1, 2));
-    JTextField quantityField = new JTextField();
-    JButton addButton = new JButton("Add");
+    private JPanel addQuantityPanel = new JPanel(new GridLayout(1, 2));
+    private JTextField quantityField = new JTextField();
+    private JButton addButton = new JButton("Add");
 
-    public String[] TableTitle = { "No", "Nama", "Harga", "Quantity" };
-    public Object[][] TableData = {};
+    private String[] TableTitle = { "No", "Nama", "Harga", "Quantity" };
+    private Object[][] TableData = {};
 
-    DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
-    JTable table = new JTable(model);
+    private DefaultTableModel model = new DefaultTableModel(TableData, TableTitle);
+    private JTable table = new JTable(model);
 
-    public JScrollPane scrollPane = new JScrollPane(table);
-    int i = 1;
-    JPanel checkoutButton = new JPanel(new GridLayout(1, 2));
-    JTextField sum = new JTextField();
-    JButton checkout = new JButton("Checkout");
+    private JScrollPane scrollPane = new JScrollPane(table);
+    private int i = 1;
+    private JPanel checkoutButton = new JPanel(new GridLayout(1, 2));
+    private JTextField sum = new JTextField();
+    private JButton checkout = new JButton("Checkout");
 
-    int summary = 0;
-    int QTY = 0;
+    private int summary = 0;
+    private int QTY = 0;
 
 //    public static ArrayList<String> BarangBeli = new ArrayList<>();
 

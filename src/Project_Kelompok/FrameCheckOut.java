@@ -10,12 +10,12 @@ public class FrameCheckOut extends JFrame {
 
     // Panel Atas
     // FrameKasir kasir = new FrameKasir();
-    JPanel PanelTop = new JPanel(new GridLayout(2, 2, 0, 25));
-    JLabel nama = new JLabel("Nama");
-    JLabel namaPembeli = new JLabel("Sample Nama");
+    private JPanel PanelTop = new JPanel(new GridLayout(2, 2, 0, 25));
+    private JLabel nama = new JLabel("Nama");
+    private JLabel namaPembeli = new JLabel("Sample Nama");
 
-    JLabel tanggal = new JLabel("Tanggal");
-    JLabel tanggalPembelian = new JLabel("01 Mei 2023");
+    private JLabel tanggal = new JLabel("Tanggal");
+    private JLabel tanggalPembelian = new JLabel("01 Mei 2023");
 
     // Panel Bawah
     public static String[] TableTitle = { "No", "Nama Barang", "Quantity", "Harga" };
@@ -26,12 +26,26 @@ public class FrameCheckOut extends JFrame {
     public static JScrollPane scrollpane = new JScrollPane(tabel);
 
     // Panel Buat Jumlah Harganya
-    JPanel BottomPanel = new JPanel(new GridLayout(1, 2));
-    JLabel labelTotal = new JLabel("Total");
-    JLabel totalBelanja = new JLabel();
-    int TotalHarga = 0;
-    String Date;
-    String Belanjaan = "";
+    private JPanel BottomPanel = new JPanel(new GridLayout(1, 2));
+    private JLabel labelTotal = new JLabel("Total");
+    private JLabel totalBelanja = new JLabel();
+    private int TotalHarga = 0;
+    private String Date;
+    private String Belanjaan = "";
+
+    public int getTotalHarga() {
+        return TotalHarga;
+    }
+    public String getDate() {
+        return Date;
+    }
+    public String getBelanjaan() {
+        return Belanjaan;
+    }
+
+    public JLabel getNamaPembeli() {
+        return namaPembeli;
+    }
 
     public FrameCheckOut(String id, String pembeli, String harga, String Item, String tgl) {
         Date = tgl;
